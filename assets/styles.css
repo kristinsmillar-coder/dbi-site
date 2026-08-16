@@ -1129,3 +1129,24 @@ footer {
   margin: 0 0 1.5rem;
 }
 footer .fine + .fine { margin-top: 0.75rem; }
+
+
+/* ── mobile bar, final form: logo row with the CTA pinned right, everything
+   else in a swipeable strip beneath. Late in the cascade on purpose — the
+   desktop `.masthead nav { flex: 1 }` (flex-basis: 0) was silently defeating
+   the earlier wrap layout and stranding Join Us off-screen. ── */
+@media (max-width: 46rem) {
+  .masthead { flex-wrap: wrap; padding-bottom: 0; }
+  .masthead nav {
+    flex: 0 0 100%;
+    order: 3;
+    justify-content: flex-start;
+  }
+  .masthead nav .cta {
+    position: absolute;
+    top: 0.6rem; right: var(--gutter);
+  }
+  .masthead nav .push { margin-left: 0; }
+  /* content on subpages clears the taller two-row bar */
+  body.subpage main { padding-top: 7.25rem; }
+}

@@ -183,10 +183,12 @@
   var holdEnd = sect.querySelector('.hold-end');
   var duration = 0, target = 0, current = -1;
 
-  // Full resolution where the screen can use it; 1440 everywhere else.
-  // MP4 for every real browser; the WebM exists only for H.264-less builds
-  // (e.g. headless test Chromium), so it only ships in one tier.
-  var hires = (window.innerWidth * (window.devicePixelRatio || 1)) >= 2200;
+  // Full resolution where the screen can use it AND the connection can carry
+  // it — the 2880 tier is 65MB, and serving it to a screen on hotel Wi-Fi
+  // guarantees the scrub outruns the download. Unknown connection = assume ok.
+  var conn = navigator.connection && navigator.connection.downlink;
+  var fastEnough = !conn || conn >= 15;   // Mbps
+  var hires = (window.innerWidth * (window.devicePixelRatio || 1)) >= 2200 && fastEnough;
   var tier = hires ? '2880' : '1440';
   var h264 = vid.canPlayType('video/mp4; codecs="avc1.640028"');
   vid.src = h264 ? 'assets/descent-' + tier + '.mp4' : 'assets/descent-1440.webm';
@@ -213,13 +215,26 @@
     // then snap, so the pin can never release with the video mid-descent.
     current = current < 0 ? target : current + (target - current) * 0.3;
     if (Math.abs(target - current) < 0.002) current = target;
-    if (current === lastWritten) return;   // settled: stop touching the DOM
+    var settled = (current === lastWritten);
     lastWritten = current;
 
+    // The video seek runs every frame even when scroll is settled: the buffer
+    // frontier keeps advancing during download, and the clamped scrub must
+    // glide forward with it or it freezes at wherever the clamp caught it.
     if (duration) {
       var t = current * Math.max(0, duration - 0.05);
+      // Never seek past the download frontier: an unbuffered seek stalls the
+      // video and reads as stutter. Clamp to the contiguous buffered range
+      // from 0 — the scrub simply waits at the frontier and glides on as
+      // bytes arrive.
+      var br = vid.buffered, lim = 0;
+      for (var bi = 0; bi < br.length; bi++) {
+        if (br.start(bi) <= lim + 0.1) lim = Math.max(lim, br.end(bi));
+      }
+      t = Math.min(t, Math.max(0, lim - 0.1));
       if (Math.abs(vid.currentTime - t) > 0.015) vid.currentTime = t;
     }
+    if (settled) return;   // style writes below only when something changed
 
     var veil = 0;
     for (var i = 0; i < stages.length; i++) {
