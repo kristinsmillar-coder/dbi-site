@@ -1162,14 +1162,27 @@ footer .fine + .fine { margin-top: 0.75rem; }
 }
 
 
+/* Copy that carries a tighter phone variant: .long shows on desktop,
+   .short takes over on phones. */
+.short { display: none; }
+@media (max-width: 46rem) {
+  .short { display: inline; }
+  .long { display: none; }
+}
+
 /* ── mobile re-optimization: no dead grid cells, pages before sub-tabs ── */
 @media (max-width: 46rem) {
-  /* Five stats can't grid on a phone without orphan cells — stack them as
-     ledger rows: number left, label right. */
-  .proof-bar { display: flex; flex-direction: column; gap: 1.05rem; }
-  .proof-bar li { flex-direction: row; align-items: baseline; gap: 1rem; }
-  .proof-bar .n { min-width: 5.9rem; font-size: 1.55rem; }
-  .proof-bar .l { max-width: none; }
+  /* Five stats can't grid on a phone without orphan cells — set them as a
+     ruled ledger: number right-aligned against its rule, one-line label. */
+  .proof-bar { display: block; }
+  .proof-bar li {
+    display: grid; grid-template-columns: 6.2rem 1fr;
+    align-items: baseline; gap: 1.1rem;
+    padding: 0.85rem 0; border-bottom: 1px solid #241f20;
+  }
+  .proof-bar li:first-child { border-top: 1px solid #241f20; }
+  .proof-bar .n { font-size: 1.5rem; text-align: right; }
+  .proof-bar .l { max-width: none; white-space: nowrap; }
 
   /* Three summit/case stats fit one row if the numerals size down. */
   .ledger { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
