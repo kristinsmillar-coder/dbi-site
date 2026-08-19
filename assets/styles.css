@@ -193,6 +193,9 @@ html.animate .masthead.on { transform: none; opacity: 1; }
   }
   .masthead nav::-webkit-scrollbar { display: none; }
   .masthead nav .cta { padding: 0.45rem 0.9rem; }
+  /* Phones keep the menu from the first frame — the cinematic hide during
+     the descent is a desktop move only. */
+  html.animate .masthead { transform: none; opacity: 1; transition: none; }
 }
 
 /* ── the descent ─────────────────────────────────────────────────────────────

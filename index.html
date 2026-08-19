@@ -6,7 +6,7 @@
 <title>Dons Business Institute — Cathedral Catholic High School</title>
 <meta name="description" content="Cathedral Catholic's business and entrepreneurship institute. Five business functions, real company challenges, industry mentors, and a startup summit. Applications for Cohort 2 open in August.">
 <meta name="theme-color" content="#0A0A0B">
-<link rel="stylesheet" href="assets/styles.css?v=7">
+<link rel="stylesheet" href="assets/styles.css?v=8">
 </head>
 <body>
 
@@ -237,6 +237,21 @@
     if (kick) kick.then(function () { vid.pause(); }).catch(function () {});
   });
 
+  // Low Power Mode blocks preload AND rejects play() until a real gesture —
+  // the video sits at readyState 0 forever. The first touch is that gesture:
+  // use it to restart the load and reopen the paint pipeline.
+  function gestureKick() {
+    removeEventListener('touchstart', gestureKick);
+    removeEventListener('pointerdown', gestureKick);
+    if (!duration && vid.readyState === 0) {
+      try { vid.load(); } catch (e) {}
+    }
+    var k = vid.play();
+    if (k) k.then(function () { vid.pause(); }).catch(function () {});
+  }
+  addEventListener('touchstart', gestureKick, { passive: true });
+  addEventListener('pointerdown', gestureKick, { passive: true });
+
   // If any source ever errors (mid-deploy 404, corrupt cache), fall back to
   // plainly streaming the 1440 file rather than showing a dead stage.
   var fellBack = false;
@@ -371,11 +386,15 @@
     }
     if (topbar) topbar.classList.toggle('on', target > 0.9);
     // At rest, show the pristine stills; the video only carries the motion.
-    if (holdStart) holdStart.style.opacity = clamp01(1 - current * 12);
+    // If the video never produced frames (Low Power Mode with no touch yet),
+    // the two stills crossfade over the whole descent instead — degraded,
+    // but never a black hole.
+    var frames = duration && vid.readyState >= 2;
+    if (holdStart) holdStart.style.opacity = frames ? clamp01(1 - current * 12) : clamp01(1 - current * 1.6);
     if (holdEnd) {
       // Eased hand-off over the final 10% — by the time the camera settles,
       // the still is already fully in and nothing visibly "switches".
-      var e = clamp01((current - 0.9) / 0.1);
+      var e = frames ? clamp01((current - 0.9) / 0.1) : clamp01((current - 0.5) / 0.35);
       holdEnd.style.opacity = e * e * (3 - 2 * e);
     }
     // The film: dark while travelling, gone at both resting points — it masks
