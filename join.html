@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0A0A0B">
-<link rel="stylesheet" href="assets/styles.css?v=9">
+<link rel="stylesheet" href="assets/styles.css?v=10">
 <title>Join Us — Dons Business Institute</title>
 <meta name="description" content="Join the Dons Business Institute — apply as a Cathedral Catholic student, or get involved as a speaker, mentor, or partner.">
 </head>
@@ -21,8 +21,9 @@
     <a href="finance.html">The Finance Program</a>
     <a href="usd.html">USD</a>
     <a href="donate.html">Donate</a>
-    <a class="cta" href="join.html">Join Us</a>
   </nav>
+  <a class="cta" href="join.html">Join Us</a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
 <main>
@@ -56,7 +57,7 @@
       <a class="choose-card" href="course.html">
         <p class="when">The Flagship Program</p>
         <h2>Intro to Business,<br>then optional entrepreneurship</h2>
-        <p>~40 seats. Every function of a business — strategy, ops, marketing, finance, HR, AI — ending at the Case Competition and, for those who continue, the Startup Summit.</p>
+        <p>~50 seats. Every function of a business — strategy, ops, marketing, finance, HR, AI — ending at the Case Competition and, for those who continue, the Startup Summit.</p>
         <span class="choose-go" aria-hidden="true">→</span>
       </a>
       <a class="choose-card" href="finance.html">
@@ -243,5 +244,23 @@
     <p class="fine">&copy; 2026 Dons Business Institute · Cathedral Catholic High School</p>
   </div>
 </footer>
+<script>
+// Phone menu: the hamburger toggles the nav dropdown; any tap on a link closes it.
+(function () {
+  var head = document.getElementById('topbar');
+  var btn = head && head.querySelector('.menu-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = head.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  head.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('nav a')) {
+      head.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 </body>
 </html>

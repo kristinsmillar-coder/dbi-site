@@ -77,6 +77,10 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* Links inherit their text's color — never the browser's blue/purple.
+   Every deliberate link color (gold prog-links, fork links, nav) overrides. */
+a { color: inherit; }
+
 ::selection { background: var(--red); color: #fff; }
 
 :where(a):focus-visible,
@@ -168,32 +172,52 @@ html.animate .masthead.on { transform: none; opacity: 1; }
   border-bottom: 1px solid transparent;
 }
 .masthead nav a:hover { border-bottom-color: var(--red); }
-.masthead nav .cta {
+.masthead .cta {
+  color: var(--paper);
+  text-decoration: none;
+  font: 400 0.72rem/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   background: var(--red); color: #fff;
   padding: 0.6rem 1.1rem; border: 0;
+  flex: 0 0 auto;
 }
-.masthead nav .cta:hover { background: var(--red-lo); border-bottom-color: transparent; }
+.masthead .cta:hover { background: var(--red-lo); }
+.menu-btn { display: none; }
 @media (max-width: 46rem) {
-  /* Compact bar: logo row, then a slim swipeable link strip. A wrapped fixed
-     bar was 148px tall and ate half the phone viewport. */
-  .masthead { flex-wrap: wrap; row-gap: 0; padding-bottom: 0; }
+  /* Phone bar: one row — logo left, Join Us pill and the hamburger right.
+     The nav itself becomes a dropdown panel under the bar. */
+  .masthead { justify-content: flex-start; gap: 0.9rem; }
   .masthead .mark img { width: 104px; }
-  .masthead nav {
-    order: 3;
-    flex-basis: 100%;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 1.4rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    white-space: nowrap;
-    margin-inline: calc(-1 * var(--gutter));
-    padding: 0.55rem var(--gutter) 0.7rem;
+  .masthead .cta { margin-left: auto; padding: 0.5rem 0.9rem; }
+  .menu-btn {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px; flex: 0 0 auto;
+    background: none; border: 0; padding: 0; cursor: pointer;
   }
-  .masthead nav::-webkit-scrollbar { display: none; }
-  .masthead nav .cta { padding: 0.45rem 0.9rem; }
-  /* Phones keep the menu from the first frame — the cinematic hide during
+  .menu-btn span {
+    display: block; width: 22px; height: 2px; background: var(--paper);
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .masthead.open .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .masthead.open .menu-btn span:nth-child(2) { opacity: 0; }
+  .masthead.open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .masthead nav {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--ground);
+    border-bottom: 1px solid rgba(43, 37, 38, 0.8);
+    padding: 0.4rem var(--gutter) 1rem;
+  }
+  .masthead.open nav { display: flex; }
+  .masthead nav a {
+    font-size: 0.8rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #241f20;
+  }
+  .masthead nav .push { margin-left: 0; }
+  /* Phones keep the menu bar from the first frame — the cinematic hide during
      the descent is a desktop move only. */
   html.animate .masthead { transform: none; opacity: 1; transition: none; }
 }
@@ -1141,25 +1165,8 @@ footer {
 footer .fine + .fine { margin-top: 0.75rem; }
 
 
-/* ── mobile bar, final form: logo row with the CTA pinned right, everything
-   else in a swipeable strip beneath. Late in the cascade on purpose — the
-   desktop `.masthead nav { flex: 1 }` (flex-basis: 0) was silently defeating
-   the earlier wrap layout and stranding Join Us off-screen. ── */
-@media (max-width: 46rem) {
-  .masthead { flex-wrap: wrap; padding-bottom: 0; }
-  .masthead nav {
-    flex: 0 0 100%;
-    order: 3;
-    justify-content: flex-start;
-  }
-  .masthead nav .cta {
-    position: absolute;
-    top: 0.6rem; right: var(--gutter);
-  }
-  .masthead nav .push { margin-left: 0; }
-  /* content on subpages clears the taller two-row bar */
-  body.subpage main { padding-top: 7.25rem; }
-}
+/* (The old two-row strip bar lived here; the phone bar is now a single row
+   with a hamburger dropdown — see the masthead section.) */
 
 
 /* Copy that carries a tighter phone variant: .long shows on desktop,
@@ -1188,14 +1195,10 @@ footer .fine + .fine { margin-top: 0.75rem; }
   .ledger { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .ledger .n { font-size: 1.5rem; }
 
-  /* In the strip, the PAGES come first — switching pages must never require
-     swiping past the section sub-tabs. Sub-tabs follow behind a divider. */
-  .masthead nav .sub { order: 5; }
-  .masthead nav .sub:first-of-type {
-    border-left: 1px solid #3a3234;
-    padding-left: 1.4rem;
-  }
-  /* The current page's marker, unmissable at strip scale. */
+  /* In the dropdown, the PAGES come first; the current page's section
+     tabs trail after them, smaller and indented. */
+  .masthead nav .sub { order: 5; font-size: 0.7rem; padding-left: 1rem; }
+  /* The current page's marker, unmissable at menu scale. */
   .masthead nav a.active { color: var(--gold); border-bottom-color: var(--gold); }
 }
 
