@@ -238,9 +238,23 @@
   // wedged or failed upgrade costs nothing — the old tier just keeps playing.
   var back = vid.cloneNode(false);
   back.removeAttribute('poster');
+  // Safari honors the muted/playsinline PROPERTIES, not cloned attributes,
+  // on dynamically-inserted videos — without these the standby's play()
+  // rejects and its seek pipeline never opens.
+  back.muted = true;
+  back.playsInline = true;
   back.style.visibility = 'hidden';
   vid.parentNode.insertBefore(back, vid.nextSibling);
   var front = vid;
+  front.muted = true;
+
+  // iPadOS reports a Mac user agent; touch points give it away. Older iPad
+  // silicon can't decode 1440p60 all-intra at scrub rate — gate the tier by
+  // core count (Apple-silicon and Pro iPads report 8+) and halve the seek
+  // rate so the decoder keeps up.
+  var iPad = navigator.maxTouchPoints > 1 && /iPad|Macintosh/.test(navigator.userAgent);
+  var weakDecode = iPad && (navigator.hardwareConcurrency || 4) < 8;
+  var seekStep = weakDecode ? 0.034 : 0.015;
 
   // iOS will not paint seek frames on a video that has never entered
   // playback — one muted play/pause on arrival opens the pipeline.
@@ -299,6 +313,10 @@
       var old = front; front = next; back = old;
       duration = front.duration;
       front.dataset.tier = label;
+      // Re-open the paint pipeline on the newly-live element — its earlier
+      // kick may have been refused before the mute settings landed.
+      var k = front.play();
+      if (k) k.then(function () { front.pause(); }).catch(function () {});
       if (done) done(true);
     }
     next.addEventListener('loadedmetadata', onMeta);
@@ -324,7 +342,8 @@
       upgradeTo(url, '960-blob', function () {
         // 65MB wants ~40Mbps to arrive before most visitors finish reading
         // the fold; below that, 1440 (21.5MB) is the honest ceiling.
-        var finalTier = retina && probeMbps >= 40 ? '2880' : '1440';
+        if (weakDecode) return;   // 960 is what this chip can scrub
+        var finalTier = !iPad && retina && probeMbps >= 40 ? '2880' : '1440';
         fetchToBlob('descent-' + finalTier + '.mp4', function (u2) {
           upgradeTo(u2, finalTier + '-blob');
         });
@@ -374,7 +393,7 @@
         if (br.start(bi) <= lim + 0.1) lim = Math.max(lim, br.end(bi));
       }
       t = Math.min(t, Math.max(0, lim - 0.1));
-      if (Math.abs(front.currentTime - t) > 0.015) front.currentTime = t;
+      if (Math.abs(front.currentTime - t) > seekStep) front.currentTime = t;
     }
     if (settled) return;   // style writes below only when something changed
 
