@@ -1,0 +1,31 @@
+/* ============================================================================
+   Dons Business Institute — design tokens
+   ----------------------------------------------------------------------------
+   Extracted 1:1 from the live site (cathedralcatholicdbi.org).
+   Color is not decorative: RED (#BA0C2F, Pantone 200C — the school) marks
+   exactly one thing per screen. GOLD (#FFCB30 — the award) is never used
+   for atmosphere. On light grounds gold's job passes to --gold-ink.
+   ========================================================================== */
+:root {
+  --red:    #BA0C2F;
+  --red-lo: #8E0823;
+  --gold:   #FFCB30;
+  --gold-ink: #8A6A00;   /* gold's job, on paper — #FFCB30 vanishes on light */
+
+  /* Neutrals carry a red bias so they read as chosen rather than inherited. */
+  --ground: #0B0A0B;     /* the theater — page black */
+  --ground-2: #151314;   /* lifted black — footers, hover fills */
+  --paper:  #E8E4E1;     /* text on dark; the light ground */
+  --paper-2:#DBD5D2;
+  --ink:    #17110F;     /* text on light */
+  --dim:    #7E7674;     /* muted on light */
+  --dim-on-dark: #8E8785;
+
+  --display: 'Young Serif', Georgia, serif;
+  --body: 'Work Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', ui-monospace, monospace;
+
+  --measure: 34rem;      /* ~65 characters */
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --stack: clamp(4rem, 9vw, 8rem);
+}

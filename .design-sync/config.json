@@ -1,0 +1,38 @@
+{
+  "projectId": "487d4884-0c02-452d-80c1-e56cd82a19ca",
+  "shape": "package",
+  "pkg": "@dbi/design-system",
+  "globalName": "DBI",
+  "buildCmd": "cd design-system && npm run build",
+  "srcDir": "src",
+  "cssEntry": "dist/dbi.css",
+  "extraFonts": [
+    "fonts/fonts.css"
+  ],
+  "docsDir": "docs",
+  "guidelinesGlob": [
+    "docs/guides/*.md"
+  ],
+  "provider": {
+    "component": "Surface",
+    "props": {
+      "ground": "dark",
+      "padded": true
+    }
+  },
+  "overrides": {
+    "ChooseGrid": {
+      "cardMode": "column"
+    },
+    "ChallengeLadder": {
+      "cardMode": "column"
+    },
+    "Surface": {
+      "cardMode": "column"
+    },
+    "SectionHeader": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
