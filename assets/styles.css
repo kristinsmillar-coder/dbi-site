@@ -1333,3 +1333,40 @@ body:not(.fin) .fork strong { color: var(--paper); }
   gap: 0 clamp(2rem, 5vw, 4.5rem);
   max-width: 62rem;
 }
+
+
+/* ── where-to-next as rows: label · title+description · arrow ── */
+.next-grid { display: flex; flex-direction: column; gap: 0; grid-template-columns: none; }
+.next-grid .choose-card {
+  display: grid;
+  /* four children, four slots: label · title · description · arrow */
+  grid-template-columns: minmax(8rem, 11rem) minmax(11rem, 15rem) 1fr auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: 1.4rem clamp(1.25rem, 3vw, 1.75rem);
+  margin-top: -1px;               /* collapse shared borders */
+}
+.next-grid .choose-card h2 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+.next-grid .choose-card .when { align-self: center; }
+.next-grid .choose-card p:last-of-type { max-width: none; font-size: 0.9rem; }
+.next-grid .choose-go { position: static; align-self: center; }
+.next-grid .choose-card > * { margin: 0; }
+@media (max-width: 52rem) {
+  .next-grid .choose-card { grid-template-columns: 1fr auto; gap: 0.5rem 1rem; }
+  .next-grid .choose-card .when { grid-column: 1 / -1; }
+  .next-grid .choose-card p:last-of-type { grid-column: 1 / -1; }
+}
+
+/* ── home: application season ── */
+.apps-open { padding: var(--stack) 0; border-top: 1px solid #241f20; background: var(--ground-2); }
+.apps-open .eyebrow { color: var(--gold); }
+.apps-open h2 { max-width: 16ch; }
+.apps-open .two-col { margin: 2.5rem 0 2rem; }
+.apps-open .two-col strong { font-weight: 400; }
+.prog-link { color: var(--gold); text-decoration-color: rgba(255, 203, 48, 0.45); }
+.prog-link:hover { text-decoration-color: var(--gold); }
+.apps-open .fine { margin-top: 1.25rem; }
+
+/* gold-primary button (the Finance apply) */
+.btn.primary.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.btn.primary.gold:hover { background: #E6B62B; border-color: #E6B62B; }
