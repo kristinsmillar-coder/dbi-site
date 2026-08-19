@@ -1263,6 +1263,29 @@ footer .fine + .fine { margin-top: 0.75rem; }
 }
 .challenge li { padding: 0.35rem 0; }
 .challenge li:last-child { color: var(--gold); }
+/* Literacy Day: the four verbs ARE the artwork — numbered ledger rules, no image */
+.challenge.ladder {
+  margin: 0; align-self: center; counter-reset: step;
+  font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.15;
+}
+.challenge.ladder li {
+  counter-increment: step;
+  display: flex; align-items: baseline; gap: 1.5rem;
+  padding: 1.1rem 0; border-bottom: 1px solid #E7E0DA;
+}
+.challenge.ladder li:first-child { border-top: 1px solid #E7E0DA; }
+.challenge.ladder li::before {
+  content: "0" counter(step);
+  font: 400 0.8rem var(--mono); color: var(--dim);
+}
+.fin-duo {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2rem); margin-top: 3rem;
+}
+.fin-duo figure { margin: 0; }
+.fin-duo img { width: 100%; height: auto; display: block; }
+.fin-duo figcaption { font: 400 0.78rem/1.5 var(--mono); color: var(--dim); margin-top: 0.85rem; }
+@media (max-width: 40rem) { .fin-duo { grid-template-columns: 1fr; } }
 .fin-close {
   font-family: var(--display);
   font-size: clamp(1.5rem, 3vw, 2.3rem);
@@ -1314,6 +1337,10 @@ body:not(.fin) .fork strong { color: var(--paper); }
 .fin-white { background: #fff; color: var(--ink); }
 .fin-white .eyebrow { color: var(--gold-ink); }
 .fin-white .fin-fig img { border: 0; }
+/* Photo fills the column to the text's full height — no floating-in-whitespace */
+.fin-white .fin-grid .fin-fig { align-self: stretch; display: flex; flex-direction: column; }
+.fin-white .fin-grid .fin-fig img { flex: 1; min-height: 0; height: 100%; object-fit: cover; }
+@media (max-width: 52rem) { .fin-white .fin-grid .fin-fig img { height: auto; object-fit: contain; } }
 .fin-white .fin-grid { align-items: center; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
 @media (max-width: 52rem) { .fin-white .fin-grid { grid-template-columns: 1fr; } }
 .fin-white .anatomy { border-top-color: #E7E0DA; }
