@@ -1280,3 +1280,7 @@ footer .fine + .fine { margin-top: 0.75rem; }
 .programs .eyebrow { color: var(--gold); }
 .programs .choose-grid { margin-top: 2.5rem; }
 .programs-note { margin-top: 1.75rem; max-width: 44rem; }
+
+/* Flagship opener reuses the finance hero components with red-led accents. */
+body:not(.fin) .fork { border-left-color: var(--red); }
+body:not(.fin) .fork strong { color: var(--paper); }
