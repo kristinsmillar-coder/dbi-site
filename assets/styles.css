@@ -1407,9 +1407,13 @@ body:not(.fin) .fork strong { color: var(--paper); }
 .apps-open { padding: var(--stack) 0; border-top: 1px solid #241f20; background: var(--ground); }
 .apps-open .eyebrow { color: var(--gold); }
 .apps-open h2 { max-width: 16ch; }
-.apps-open .two-col { margin: 2.5rem 0 2rem; }
-.apps-open .two-col strong { font-weight: 400; }
-.apps-open .prize { color: var(--gold); }
+.apps-open .apps-flagship { margin: 2.5rem 0 2rem; max-width: 44rem; }
+.apps-open .apps-flagship strong { font-weight: 400; }
+.apps-open .apps-fin {
+  margin-top: 2rem; max-width: var(--measure);
+  font-size: 0.9rem; color: var(--dim-on-dark);
+}
+.prize { color: var(--gold); }
 .prog-link { color: var(--gold); text-decoration-color: rgba(255, 203, 48, 0.45); }
 .prog-link:hover { text-decoration-color: var(--gold); }
 .apps-open .fine { margin-top: 1.25rem; }
