@@ -1358,7 +1358,7 @@ body:not(.fin) .fork strong { color: var(--paper); }
 }
 
 /* ── home: application season ── */
-.apps-open { padding: var(--stack) 0; border-top: 1px solid #241f20; background: var(--ground-2); }
+.apps-open { padding: var(--stack) 0; border-top: 1px solid #241f20; background: var(--ground); }
 .apps-open .eyebrow { color: var(--gold); }
 .apps-open h2 { max-width: 16ch; }
 .apps-open .two-col { margin: 2.5rem 0 2rem; }
