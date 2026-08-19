@@ -232,67 +232,80 @@
   // from "never loaded at all" (Low Power Mode before any touch).
   var everLoaded = false;
 
-  vid.addEventListener('loadedmetadata', function () {
-    everLoaded = true;
-    duration = vid.duration;
-    // iOS will not paint seek frames on a video that has never entered
-    // playback — one muted play/pause opens the pipeline. No-op elsewhere.
-    var kick = vid.play();
-    if (kick) kick.then(function () { vid.pause(); }).catch(function () {});
-  });
+  // ── Two stacked elements. `front` is live and owns the scrub; upgrades
+  // load fully in the hidden `back` element and only become front once
+  // provably seekable. The live video is NEVER touched by an upgrade, so a
+  // wedged or failed upgrade costs nothing — the old tier just keeps playing.
+  var back = vid.cloneNode(false);
+  back.removeAttribute('poster');
+  back.style.visibility = 'hidden';
+  vid.parentNode.insertBefore(back, vid.nextSibling);
+  var front = vid;
 
-  // Low Power Mode blocks preload AND rejects play() until a real gesture —
-  // the video sits at readyState 0 forever. The first touch is that gesture:
-  // restart the load and open the pipeline. STRICTLY a dead-video rescue —
-  // on a healthy load this must never run, or play() fights the scrub.
+  // iOS will not paint seek frames on a video that has never entered
+  // playback — one muted play/pause on arrival opens the pipeline.
+  [front, back].forEach(function (v) {
+    v.addEventListener('loadedmetadata', function () {
+      everLoaded = true;
+      if (v === front) duration = v.duration;
+      var kick = v.play();
+      if (kick) kick.then(function () { v.pause(); }).catch(function () {});
+    });
+    // Only a LIVE element's failure matters; a failed upgrade is abandoned.
+    v.addEventListener('error', function () {
+      if (v !== front || fellBack) return;
+      fellBack = true;
+      duration = 0;
+      front.dataset.tier = 'fallback-1440';
+      front.src = 'assets/descent-1440.mp4';
+      front.load();
+    });
+  });
+  var fellBack = false;
+
+  // Low Power Mode blocks preload until a real gesture. A play() call inside
+  // the gesture starts the load — and is harmless if loading is already under
+  // way (no load() here: restarting a healthy in-flight load causes the
+  // startup stutter). Re-arms on every touch until something has loaded.
   function gestureKick() {
-    removeEventListener('touchstart', gestureKick);
-    removeEventListener('pointerdown', gestureKick);
-    if (everLoaded || vid.readyState > 0) return;
-    try { vid.load(); } catch (e) {}
-    var k = vid.play();
-    if (k) k.then(function () { vid.pause(); }).catch(function () {});
+    if (everLoaded) {
+      removeEventListener('touchstart', gestureKick);
+      removeEventListener('pointerdown', gestureKick);
+      return;
+    }
+    var k = front.play();
+    if (k) k.then(function () { front.pause(); }).catch(function () {});
   }
   addEventListener('touchstart', gestureKick, { passive: true });
   addEventListener('pointerdown', gestureKick, { passive: true });
 
-  // If any source ever errors (mid-deploy 404, corrupt cache), fall back to
-  // plainly streaming the 1440 file rather than showing a dead stage.
-  var fellBack = false;
-  vid.addEventListener('error', function () {
-    if (fellBack) return;
-    fellBack = true;
-    duration = 0;
-    vid.dataset.tier = 'fallback-1440';
-    vid.src = 'assets/descent-1440.mp4';
-    vid.load();
-  });
-
-  function swapTo(url, label) {
-    // Freeze the current frame over the element so the src handoff never flashes.
-    var c = null;
-    if (vid.videoWidth) {
-      c = document.createElement('canvas');
-      c.width = vid.videoWidth; c.height = vid.videoHeight;
-      try { c.getContext('2d').drawImage(vid, 0, 0); } catch (e) { c = null; }
-      if (c) { c.className = 'descent-freeze'; vid.parentNode.insertBefore(c, vid.nextSibling); }
+  function upgradeTo(url, label, done) {
+    var next = back;
+    var guard = setTimeout(fail, 10000);
+    function cleanup() {
+      clearTimeout(guard);
+      next.removeEventListener('loadedmetadata', onMeta);
+      next.removeEventListener('seeked', onSeeked);
     }
-    var t = vid.currentTime;
-    duration = 0;                       // the tick loop stops seeking mid-swap
-    function done() {
-      vid.removeEventListener('seeked', done);
-      if (c && c.parentNode) c.parentNode.removeChild(c);
-    }
+    function fail() { cleanup(); if (done) done(false); }
     function onMeta() {
-      vid.removeEventListener('loadedmetadata', onMeta);
-      duration = vid.duration;
-      vid.dataset.tier = label;
-      vid.addEventListener('seeked', done);
-      try { vid.currentTime = t; } catch (e) { done(); }
-      setTimeout(done, 500);            // safety if 'seeked' never fires
+      // Align the standby to the live frame; 'seeked' proves it can paint.
+      try { next.currentTime = front.currentTime; } catch (e) { fail(); }
     }
-    vid.addEventListener('loadedmetadata', onMeta);
-    vid.src = url;
+    function onSeeked() {
+      cleanup();
+      next.style.visibility = '';
+      front.style.visibility = 'hidden';
+      var old = front; front = next; back = old;
+      duration = front.duration;
+      front.dataset.tier = label;
+      if (done) done(true);
+    }
+    next.addEventListener('loadedmetadata', onMeta);
+    next.addEventListener('seeked', onSeeked);
+    next.dataset.tier = 'loading:' + label;
+    next.src = url;
+    next.load();
   }
 
   function fetchToBlob(name, cb) {
@@ -303,25 +316,26 @@
   }
 
   if (h264) {
-    vid.src = 'assets/descent-960.mp4';
-    vid.dataset.tier = '960-stream';
+    front.src = 'assets/descent-960.mp4';
+    front.dataset.tier = '960-stream';
     var probeStart = performance.now();
     fetchToBlob('descent-960.mp4', function (url) {
       probeMbps = (5.6 * 8) / Math.max(0.05, (performance.now() - probeStart) / 1000);
-      swapTo(url, '960-blob');
-      // 65MB wants ~40Mbps to arrive before most visitors finish reading the
-      // fold; below that, 1440 (21.5MB) is the honest ceiling.
-      var finalTier = retina && probeMbps >= 40 ? '2880' : '1440';
-      fetchToBlob('descent-' + finalTier + '.mp4', function (u2) {
-        swapTo(u2, finalTier + '-blob');
+      upgradeTo(url, '960-blob', function () {
+        // 65MB wants ~40Mbps to arrive before most visitors finish reading
+        // the fold; below that, 1440 (21.5MB) is the honest ceiling.
+        var finalTier = retina && probeMbps >= 40 ? '2880' : '1440';
+        fetchToBlob('descent-' + finalTier + '.mp4', function (u2) {
+          upgradeTo(u2, finalTier + '-blob');
+        });
       });
     });
   } else {
-    vid.src = 'assets/descent-1440.webm';
-    vid.dataset.tier = 'webm-stream';
-    fetchToBlob('descent-1440.webm', function (url) { swapTo(url, 'webm-blob'); });
+    front.src = 'assets/descent-1440.webm';
+    front.dataset.tier = 'webm-stream';
+    fetchToBlob('descent-1440.webm', function (url) { upgradeTo(url, 'webm-blob'); });
   }
-  vid.load();
+  front.load();
 
   function clamp01(x) { return Math.min(1, Math.max(0, x)); }
 
@@ -355,12 +369,12 @@
       // video and reads as stutter. Clamp to the contiguous buffered range
       // from 0 — the scrub simply waits at the frontier and glides on as
       // bytes arrive.
-      var br = vid.buffered, lim = 0;
+      var br = front.buffered, lim = 0;
       for (var bi = 0; bi < br.length; bi++) {
         if (br.start(bi) <= lim + 0.1) lim = Math.max(lim, br.end(bi));
       }
       t = Math.min(t, Math.max(0, lim - 0.1));
-      if (Math.abs(vid.currentTime - t) > 0.015) vid.currentTime = t;
+      if (Math.abs(front.currentTime - t) > 0.015) front.currentTime = t;
     }
     if (settled) return;   // style writes below only when something changed
 
