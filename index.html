@@ -229,7 +229,13 @@
   // bandwidth probe: the measured speed decides whether 2880 is affordable.
   var probeMbps = 0;
 
+  // True once the video has EVER delivered metadata. Blob swaps zero out
+  // `duration` for a moment — this flag is what tells "mid-upgrade" apart
+  // from "never loaded at all" (Low Power Mode before any touch).
+  var everLoaded = false;
+
   vid.addEventListener('loadedmetadata', function () {
+    everLoaded = true;
     duration = vid.duration;
     // iOS will not paint seek frames on a video that has never entered
     // playback — one muted play/pause opens the pipeline. No-op elsewhere.
@@ -239,13 +245,13 @@
 
   // Low Power Mode blocks preload AND rejects play() until a real gesture —
   // the video sits at readyState 0 forever. The first touch is that gesture:
-  // use it to restart the load and reopen the paint pipeline.
+  // restart the load and open the pipeline. STRICTLY a dead-video rescue —
+  // on a healthy load this must never run, or play() fights the scrub.
   function gestureKick() {
     removeEventListener('touchstart', gestureKick);
     removeEventListener('pointerdown', gestureKick);
-    if (!duration && vid.readyState === 0) {
-      try { vid.load(); } catch (e) {}
-    }
+    if (everLoaded || vid.readyState > 0) return;
+    try { vid.load(); } catch (e) {}
     var k = vid.play();
     if (k) k.then(function () { vid.pause(); }).catch(function () {});
   }
@@ -388,8 +394,9 @@
     // At rest, show the pristine stills; the video only carries the motion.
     // If the video never produced frames (Low Power Mode with no touch yet),
     // the two stills crossfade over the whole descent instead — degraded,
-    // but never a black hole.
-    var frames = duration && vid.readyState >= 2;
+    // but never a black hole. Keyed on everLoaded, NOT current duration:
+    // blob swaps zero duration transiently and must not flash the stills.
+    var frames = everLoaded;
     if (holdStart) holdStart.style.opacity = frames ? clamp01(1 - current * 12) : clamp01(1 - current * 1.6);
     if (holdEnd) {
       // Eased hand-off over the final 10% — by the time the camera settles,
