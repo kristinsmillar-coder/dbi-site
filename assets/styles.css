@@ -1157,3 +1157,28 @@ footer .fine + .fine { margin-top: 0.75rem; }
   /* content on subpages clears the taller two-row bar */
   body.subpage main { padding-top: 7.25rem; }
 }
+
+
+/* ── mobile re-optimization: no dead grid cells, pages before sub-tabs ── */
+@media (max-width: 46rem) {
+  /* Five stats can't grid on a phone without orphan cells — stack them as
+     ledger rows: number left, label right. */
+  .proof-bar { display: flex; flex-direction: column; gap: 1.05rem; }
+  .proof-bar li { flex-direction: row; align-items: baseline; gap: 1rem; }
+  .proof-bar .n { min-width: 5.9rem; font-size: 1.55rem; }
+  .proof-bar .l { max-width: none; }
+
+  /* Three summit/case stats fit one row if the numerals size down. */
+  .ledger { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .ledger .n { font-size: 1.5rem; }
+
+  /* In the strip, the PAGES come first — switching pages must never require
+     swiping past the section sub-tabs. Sub-tabs follow behind a divider. */
+  .masthead nav .sub { order: 5; }
+  .masthead nav .sub:first-of-type {
+    border-left: 1px solid #3a3234;
+    padding-left: 1.4rem;
+  }
+  /* The current page's marker, unmissable at strip scale. */
+  .masthead nav a.active { color: var(--gold); border-bottom-color: var(--gold); }
+}

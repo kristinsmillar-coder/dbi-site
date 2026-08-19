@@ -193,7 +193,25 @@
   // bandwidth probe: the measured speed decides whether 2880 is affordable.
   var probeMbps = 0;
 
-  vid.addEventListener('loadedmetadata', function () { duration = vid.duration; });
+  vid.addEventListener('loadedmetadata', function () {
+    duration = vid.duration;
+    // iOS will not paint seek frames on a video that has never entered
+    // playback — one muted play/pause opens the pipeline. No-op elsewhere.
+    var kick = vid.play();
+    if (kick) kick.then(function () { vid.pause(); }).catch(function () {});
+  });
+
+  // If any source ever errors (mid-deploy 404, corrupt cache), fall back to
+  // plainly streaming the 1440 file rather than showing a dead stage.
+  var fellBack = false;
+  vid.addEventListener('error', function () {
+    if (fellBack) return;
+    fellBack = true;
+    duration = 0;
+    vid.dataset.tier = 'fallback-1440';
+    vid.src = 'assets/descent-1440.mp4';
+    vid.load();
+  });
 
   function swapTo(url, label) {
     // Freeze the current frame over the element so the src handoff never flashes.
