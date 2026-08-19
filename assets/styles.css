@@ -1264,9 +1264,8 @@ footer .fine + .fine { margin-top: 0.75rem; }
 }
 .fin-thesis strong { color: var(--gold); font-weight: 400; }
 
-.fin-session { padding: 1.5rem 0; border-top: 1px solid #2b2526; }
-.fin-session:first-child { border-top: 0; padding-top: 0; }
-.fin-session .when { color: var(--gold); }
+.fin-session { padding: 1.5rem 0 1.75rem; border-top: 1px solid #2b2526; }
+.fin-session .when { color: var(--gold); font-size: 0.64rem; letter-spacing: 0.1em; white-space: nowrap; }
 .fin-session h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin: 0 0 0.6rem; }
 .fin-session p { margin: 0; font-size: 0.95rem; }
 
