@@ -210,6 +210,13 @@ html.animate .masthead.on { transform: none; opacity: 1; }
   display: grid;
 }
 .descent-video, .frame-hold { display: none; }
+.descent-freeze {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+}
 /* Rest frames: the native stills, pin-sharp, painted over the video whenever
    the camera is parked at either end. Same stacking layer, later in DOM. */
 html.animate .frame-hold {

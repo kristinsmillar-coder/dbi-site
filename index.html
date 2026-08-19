@@ -183,16 +183,71 @@
   var holdEnd = sect.querySelector('.hold-end');
   var duration = 0, target = 0, current = -1;
 
-  // Full resolution where the screen can use it AND the connection can carry
-  // it — the 2880 tier is 65MB, and serving it to a screen on hotel Wi-Fi
-  // guarantees the scrub outruns the download. Unknown connection = assume ok.
-  var conn = navigator.connection && navigator.connection.downlink;
-  var fastEnough = !conn || conn >= 15;   // Mbps
-  var hires = (window.innerWidth * (window.devicePixelRatio || 1)) >= 2200 && fastEnough;
-  var tier = hires ? '2880' : '1440';
+  // The ladder: stream the 5.6MB tier instantly, then pull each tier fully
+  // into memory and swap to the blob — a blob-backed video cannot stall a
+  // seek, on any device or connection. Quality upgrades ride in behind.
   var h264 = vid.canPlayType('video/mp4; codecs="avc1.640028"');
-  vid.src = h264 ? 'assets/descent-' + tier + '.mp4' : 'assets/descent-1440.webm';
+  var retina = (window.innerWidth * (window.devicePixelRatio || 1)) >= 2200;
+  // navigator.connection.downlink is privacy-capped at 10Mbps in Chrome, so it
+  // can't gate a 65MB file. Instead, the 960 fetch below doubles as a REAL
+  // bandwidth probe: the measured speed decides whether 2880 is affordable.
+  var probeMbps = 0;
+
   vid.addEventListener('loadedmetadata', function () { duration = vid.duration; });
+
+  function swapTo(url, label) {
+    // Freeze the current frame over the element so the src handoff never flashes.
+    var c = null;
+    if (vid.videoWidth) {
+      c = document.createElement('canvas');
+      c.width = vid.videoWidth; c.height = vid.videoHeight;
+      try { c.getContext('2d').drawImage(vid, 0, 0); } catch (e) { c = null; }
+      if (c) { c.className = 'descent-freeze'; vid.parentNode.insertBefore(c, vid.nextSibling); }
+    }
+    var t = vid.currentTime;
+    duration = 0;                       // the tick loop stops seeking mid-swap
+    function done() {
+      vid.removeEventListener('seeked', done);
+      if (c && c.parentNode) c.parentNode.removeChild(c);
+    }
+    function onMeta() {
+      vid.removeEventListener('loadedmetadata', onMeta);
+      duration = vid.duration;
+      vid.dataset.tier = label;
+      vid.addEventListener('seeked', done);
+      try { vid.currentTime = t; } catch (e) { done(); }
+      setTimeout(done, 500);            // safety if 'seeked' never fires
+    }
+    vid.addEventListener('loadedmetadata', onMeta);
+    vid.src = url;
+  }
+
+  function fetchToBlob(name, cb) {
+    fetch('assets/' + name)
+      .then(function (r) { return r.ok ? r.blob() : Promise.reject(); })
+      .then(function (bl) { cb(URL.createObjectURL(bl)); })
+      .catch(function () {});
+  }
+
+  if (h264) {
+    vid.src = 'assets/descent-960.mp4';
+    vid.dataset.tier = '960-stream';
+    var probeStart = performance.now();
+    fetchToBlob('descent-960.mp4', function (url) {
+      probeMbps = (5.6 * 8) / Math.max(0.05, (performance.now() - probeStart) / 1000);
+      swapTo(url, '960-blob');
+      // 65MB wants ~40Mbps to arrive before most visitors finish reading the
+      // fold; below that, 1440 (21.5MB) is the honest ceiling.
+      var finalTier = retina && probeMbps >= 40 ? '2880' : '1440';
+      fetchToBlob('descent-' + finalTier + '.mp4', function (u2) {
+        swapTo(u2, finalTier + '-blob');
+      });
+    });
+  } else {
+    vid.src = 'assets/descent-1440.webm';
+    vid.dataset.tier = 'webm-stream';
+    fetchToBlob('descent-1440.webm', function (url) { swapTo(url, 'webm-blob'); });
+  }
   vid.load();
 
   function clamp01(x) { return Math.min(1, Math.max(0, x)); }
