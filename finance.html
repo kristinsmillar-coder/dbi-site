@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0A0A0B">
-<link rel="stylesheet" href="assets/styles.css?v=13">
+<link rel="stylesheet" href="assets/styles.css?v=14">
 <title>The Finance Program — Dons Business Institute</title>
 <meta name="description" content="A 25-seat, finance-only offshoot of the Dons Business Institute — markets, investing, and corporate finance, ending in a stock pitch defended before professionals. Want the full program? See the Flagship.">
 </head>
@@ -317,6 +317,41 @@
       head.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
     }
+  });
+})();
+</script>
+
+<!-- ── Finance gate: a checkpoint before the finance application. ── -->
+<dialog class="fin-gate" id="fin-gate">
+  <p class="eyebrow">Before you apply</p>
+  <h2>Make sure finance<br>is for you.</h2>
+  <ul>
+    <li><strong>25 spots.</strong> That&rsquo;s the entire program.</li>
+    <li>The curriculum is <strong>finance only</strong> &mdash; and it spans both semesters.</li>
+    <li>You will <strong>not</strong> compete for the <span class="prize">$20,000+ in prizes</span>,
+        and you won&rsquo;t pitch your solution to a San Diego business &mdash; those belong to
+        the Flagship.</li>
+  </ul>
+  <div class="actions">
+    <a class="btn primary" href="https://forms.gle/q7pKtM2hYFmxBrgD8" target="_blank" rel="noopener">Apply to the Flagship instead</a>
+    <a class="btn" id="fin-gate-go" href="https://docs.google.com/forms/d/e/1FAIpQLSfgSjgCQDNSoblGQoCUvquJjv7KmGGJ7AcOs6E7d-ko0qumkQ/viewform" target="_blank" rel="noopener">I understand &mdash; continue</a>
+  </div>
+  <p class="fine">Esc or click outside to close.</p>
+</dialog>
+<script>
+// Any link to the finance application opens the checkpoint first.
+(function () {
+  var gate = document.getElementById('fin-gate');
+  if (!gate || !gate.showModal) return;      // no <dialog> support: links just work
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="docs.google.com/forms"]');
+    if (!a || gate.open) return;             // clicks inside the open gate pass through
+    e.preventDefault();
+    gate.showModal();
+  }, true);
+  gate.addEventListener('click', function (e) {
+    if (e.target === gate) gate.close();     // backdrop click closes
+    if (e.target.closest && e.target.closest('a.btn')) gate.close();
   });
 })();
 </script>

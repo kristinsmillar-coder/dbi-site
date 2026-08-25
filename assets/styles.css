@@ -1420,3 +1420,21 @@ body:not(.fin) .fork strong { color: var(--paper); }
 /* gold-primary button (the Finance apply) */
 .btn.primary.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 .btn.primary.gold:hover { background: #E6B62B; border-color: #E6B62B; }
+
+/* ── the finance gate: a checkpoint dialog before the finance application ── */
+.fin-gate {
+  background: var(--ground);
+  color: var(--paper);
+  border: 1px solid #3a3234;
+  border-top: 3px solid var(--gold);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  max-width: min(34rem, calc(100vw - 2rem));
+  margin: auto;
+}
+.fin-gate::backdrop { background: rgba(11, 10, 11, 0.8); backdrop-filter: blur(3px); }
+.fin-gate h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+.fin-gate ul { list-style: none; margin: 0 0 0.5rem; padding: 0; }
+.fin-gate li { padding: 0.7rem 0; border-bottom: 1px solid #241f20; font-size: 0.95rem; }
+.fin-gate li:first-child { border-top: 1px solid #241f20; }
+.fin-gate .actions { margin-top: 1.75rem; }
+.fin-gate .fine { margin-top: 1.25rem; font-size: 0.72rem; }
