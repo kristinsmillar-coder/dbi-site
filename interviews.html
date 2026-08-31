@@ -192,7 +192,8 @@
 
   // ── availability ──
   function refresh() {
-    if (!BACKEND) { render(); return; }
+    render();                      // paint immediately; the fetch updates in place
+    if (!BACKEND) return;
     fetch(BACKEND, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (d) {
