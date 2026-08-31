@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="stylesheet" href="assets/styles.css?v=15">
+<title>Interviews — Dons Business Institute</title>
+<meta name="description" content="Flagship Program interview sign-ups.">
+<meta name="robots" content="noindex">
+</head>
+<body class="subpage">
+
+<a class="skip" href="#gate">Skip to content</a>
+
+<header class="masthead" id="topbar">
+  <a class="mark" href="index.html" aria-label="Dons Business Institute — home">
+    <img src="assets/img/lockup.png" alt="" width="170" height="55">
+  </a>
+  <nav aria-label="Primary">
+    <a href="course.html" class="push">The Flagship Program</a>
+    <a href="finance.html">The Finance Program</a>
+    <a href="usd.html">USD</a>
+    <a href="interviews.html" class="active">Interviews</a>
+    <a href="donate.html">Donate</a>
+  </nav>
+  <a class="cta" href="join.html">Join Us</a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+<!-- ── The gate ── -->
+<section id="gate" class="iv-gate-sect">
+  <div class="wrap">
+    <p class="eyebrow">The Flagship Program · September 1–4</p>
+    <h1>Interview sign-ups.</h1>
+    <p class="lede narrow">
+      If you were invited to interview, you received a password. Enter it to pick
+      your slot.
+    </p>
+    <form class="iv-pass" id="iv-pass" autocomplete="off">
+      <input type="password" id="iv-pw" placeholder="PASSWORD" aria-label="Interview password" required>
+      <button class="btn primary" type="submit">Enter</button>
+    </form>
+    <p class="fine iv-wrong" id="iv-wrong" hidden>That&rsquo;s not it — check the invitation email.</p>
+  </div>
+</section>
+
+<!-- ── The booking flow (revealed by the gate) ── -->
+<section class="iv-book" id="iv-book" hidden>
+  <div class="wrap">
+    <p class="eyebrow">Step 1 · Pick a day</p>
+    <h2 id="days">Pick your day.</h2>
+    <p class="lede narrow">
+      Interviews are <strong>six minutes</strong>, in person. Slots disappear as
+      they&rsquo;re booked — what you see is what&rsquo;s left.
+    </p>
+    <div class="iv-days" id="iv-days"></div>
+
+    <div class="iv-slots-wrap" id="iv-slots-wrap" hidden>
+      <p class="eyebrow" style="margin-top:3rem">Step 2 · Pick a slot</p>
+      <h2 id="iv-day-title"></h2>
+      <div class="iv-slots" id="iv-slots"></div>
+      <p class="fine">All times PM. A ten-minute break runs 3:50&ndash;4:00.</p>
+    </div>
+  </div>
+</section>
+
+<section class="iv-note">
+  <div class="wrap">
+    <p class="fine">
+      Trouble signing up? Email <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>
+      with your name and three slots that work, and we&rsquo;ll book you by hand.
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="footer-mark" src="assets/img/lockup.png" alt="Dons Business Institute, Cathedral Catholic High School" width="280" height="91">
+    <p class="charter">Student-led · Industry-informed · School-authorized · Adult-governed</p>
+    <p class="fine">
+      The Dons Business Institute is a programme of Cathedral Catholic High School, San Diego.
+      Founded 2025. <span class="motto">Scientia Pro Deo et Patria.</span>
+    </p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="course.html">The Flagship Program</a>
+      <a href="finance.html">The Finance Program</a>
+      <a href="usd.html">USD Partnership</a>
+      <a href="donate.html">Donate</a>
+      <a href="join.html">Join Us</a>
+    </nav>
+    <p class="fine">&copy; 2026 Dons Business Institute · Cathedral Catholic High School</p>
+  </div>
+</footer>
+
+<!-- ── The booking form ── -->
+<dialog class="fin-gate iv-form" id="iv-form">
+  <p class="eyebrow">Step 3 · Your details</p>
+  <h2 id="iv-form-title">Book this slot.</h2>
+  <form id="iv-details">
+    <label>Name <input name="name" required autocomplete="name"></label>
+    <label>School <input name="school" required placeholder="Cathedral Catholic, or your current school"></label>
+    <label>Phone <input name="phone" type="tel" required autocomplete="tel"></label>
+    <label>Email <input name="email" type="email" required autocomplete="email"></label>
+    <label>Graduation year
+      <select name="gradYear" required>
+        <option value="" selected disabled>Choose&hellip;</option>
+        <option>2027</option><option>2028</option><option>2029</option><option>2030</option>
+      </select>
+    </label>
+    <label>Parent name <input name="parentName" required></label>
+    <label>Parent email <input name="parentEmail" type="email" required></label>
+    <label>Parent phone <input name="parentPhone" type="tel" required></label>
+    <div class="actions">
+      <button class="btn primary" type="submit" id="iv-submit">Book my interview</button>
+      <button class="btn" type="button" id="iv-cancel">Cancel</button>
+    </div>
+    <p class="fine iv-err" id="iv-err" hidden></p>
+  </form>
+</dialog>
+
+<dialog class="fin-gate iv-done" id="iv-done">
+  <p class="eyebrow eyebrow--gold" style="color:var(--gold)">Booked</p>
+  <h2>See you there.</h2>
+  <p id="iv-done-when" class="lede"></p>
+  <p>A confirmation is on its way to you and your parent. Six minutes — arrive a
+     few early, and be yourself.</p>
+  <div class="actions"><button class="btn primary" id="iv-done-close">Done</button></div>
+</dialog>
+
+<script>
+// Phone menu (same as every page).
+(function () {
+  var head = document.getElementById('topbar');
+  var btn = head && head.querySelector('.menu-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = head.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  head.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('nav a')) {
+      head.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+(function () {
+  // ── Wiring: paste the Apps Script Web app URL (ends in /exec) here. ──
+  var BACKEND = '';
+
+  var PASSWORD = 'DBI2026FLAGSHIP';
+
+  var FULL = ['2:30–2:36','2:38–2:44','2:46–2:52','2:54–3:00','3:02–3:08',
+              '3:10–3:16','3:18–3:24','3:26–3:32','3:34–3:40','3:42–3:48',
+              '4:00–4:06','4:08–4:14','4:16–4:22','4:24–4:30','4:32–4:38',
+              '4:40–4:46','4:48–4:54','4:56–5:02'];
+  var DAYS = [
+    { id: 'tue', label: 'Tuesday',   date: 'September 1', times: FULL },
+    { id: 'wed', label: 'Wednesday', date: 'September 2', times: FULL },
+    { id: 'thu', label: 'Thursday',  date: 'September 3', times: FULL.slice(0, 17) },
+    { id: 'fri', label: 'Friday',    date: 'September 4', times: FULL.slice(0, 17) },
+  ];
+
+  var booked = {};          // slotId -> true
+  var current = null;       // selected day object
+  var pending = null;       // slot being booked {id, day, time}
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ── gate ──
+  var unlocked = false;
+  try { unlocked = sessionStorage.getItem('dbi-iv') === '1'; } catch (e) {}
+  function unlock() {
+    $('gate').hidden = true;
+    $('iv-book').hidden = false;
+    refresh();
+  }
+  if (unlocked) unlock();
+  $('iv-pass').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if ($('iv-pw').value.trim().toUpperCase() === PASSWORD) {
+      try { sessionStorage.setItem('dbi-iv', '1'); } catch (err) {}
+      unlock();
+    } else {
+      $('iv-wrong').hidden = false;
+      $('iv-pw').select();
+    }
+  });
+
+  // ── availability ──
+  function refresh() {
+    if (!BACKEND) { render(); return; }
+    fetch(BACKEND, { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        booked = {};
+        (d.booked || []).forEach(function (id) { booked[id] = true; });
+        render();
+      })
+      .catch(function () { render(); });
+  }
+
+  function remaining(day) {
+    return day.times.filter(function (t) { return !booked[day.id + '|' + t]; }).length;
+  }
+
+  // ── render ──
+  function render() {
+    var days = $('iv-days');
+    days.innerHTML = '';
+    DAYS.forEach(function (d) {
+      var left = remaining(d);
+      var b = document.createElement('button');
+      b.className = 'iv-day' + (current === d ? ' on' : '');
+      b.disabled = left === 0;
+      b.innerHTML = '<span class="when">' + d.label + '</span>' +
+                    '<strong>' + d.date + '</strong>' +
+                    '<span class="iv-left">' + (left === 0 ? 'Full' : left + ' slots left') + '</span>';
+      b.addEventListener('click', function () { current = d; render(); showSlots(); });
+      days.appendChild(b);
+    });
+    if (current) showSlots();
+  }
+
+  function showSlots() {
+    $('iv-slots-wrap').hidden = false;
+    $('iv-day-title').textContent = current.label + ', ' + current.date + '.';
+    var grid = $('iv-slots');
+    grid.innerHTML = '';
+    current.times.forEach(function (t) {
+      if (booked[current.id + '|' + t]) return;   // taken slots simply go away
+      var b = document.createElement('button');
+      b.className = 'iv-slot';
+      b.textContent = t;
+      b.addEventListener('click', function () {
+        pending = { id: current.id + '|' + t, day: current.id, time: t };
+        $('iv-form-title').innerHTML = current.label + ', ' + current.date + '<br>' + t + ' PM';
+        $('iv-err').hidden = true;
+        $('iv-form').showModal();
+      });
+      grid.appendChild(b);
+    });
+    if (!grid.children.length) grid.innerHTML = '<p class="fine">This day is fully booked.</p>';
+    $('iv-slots-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── booking ──
+  $('iv-cancel').addEventListener('click', function () { $('iv-form').close(); });
+  $('iv-details').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!BACKEND) {
+      var er = $('iv-err');
+      er.textContent = 'Sign-ups haven’t opened yet — check back soon.';
+      er.hidden = false;
+      return;
+    }
+    var f = e.target;
+    var body = new URLSearchParams();
+    body.set('slot', pending.id); body.set('day', pending.day); body.set('time', pending.time);
+    ['name','school','phone','email','gradYear','parentName','parentEmail','parentPhone']
+      .forEach(function (k) { body.set(k, f.elements[k].value); });
+    $('iv-submit').disabled = true;
+    fetch(BACKEND, { method: 'POST', body: body })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        $('iv-submit').disabled = false;
+        if (d.ok) {
+          $('iv-form').close();
+          f.reset();
+          $('iv-done-when').textContent = current.label + ', ' + current.date + ' · ' + pending.time + ' PM';
+          $('iv-done').showModal();
+          refresh();
+        } else if (d.error === 'taken') {
+          $('iv-form').close();
+          alertTaken();
+        } else {
+          showErr('Something went wrong — try again, or email dbi@cathedralcatholic.org.');
+        }
+      })
+      .catch(function () {
+        $('iv-submit').disabled = false;
+        showErr('Couldn’t reach the sign-up server — check your connection and try again.');
+      });
+  });
+  function showErr(msg) {
+    var er = $('iv-err'); er.textContent = msg; er.hidden = false;
+    $('iv-submit').disabled = false;
+  }
+  function alertTaken() {
+    refresh();
+    var er = document.createElement('p');
+    $('iv-day-title').textContent = 'That slot was just taken — pick another.';
+  }
+  $('iv-done-close').addEventListener('click', function () { $('iv-done').close(); });
+
+  // Keep availability honest while the page sits open.
+  setInterval(function () { if (!$('iv-book').hidden) refresh(); }, 30000);
+})();
+</script>
+</body>
+</html>
