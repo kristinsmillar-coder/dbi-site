@@ -191,17 +191,28 @@
   });
 
   // ── availability ──
+  var loaded = false;
   function refresh() {
-    render();                      // paint immediately; the fetch updates in place
-    if (!BACKEND) return;
-    fetch(BACKEND, { cache: 'no-store' })
+    if (!BACKEND) { loaded = true; render(); return; }
+    if (!loaded) $('iv-days').innerHTML =
+      '<p class="fine">Checking live availability&hellip;</p>';
+    return fetch(BACKEND, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         booked = {};
         (d.booked || []).forEach(function (id) { booked[id] = true; });
+        loaded = true;
         render();
+        return true;
       })
-      .catch(function () { render(); });
+      .catch(function () {
+        if (!loaded) {
+          $('iv-days').innerHTML =
+            '<p class="fine">Couldn&rsquo;t load availability &mdash; retrying&hellip;</p>';
+          setTimeout(refresh, 3000);
+        }
+        return false;
+      });
   }
 
   function remaining(day) {
@@ -241,6 +252,16 @@
         $('iv-form-title').innerHTML = current.label + ', ' + current.date + '<br>' + t + ' PM';
         $('iv-err').hidden = true;
         $('iv-form').showModal();
+        // Re-check while they read the form: if the slot just went, tell
+        // them BEFORE they type everything in.
+        var mine = pending.id;
+        var check = refresh();
+        if (check) check.then(function () {
+          if (pending && pending.id === mine && booked[mine]) {
+            $('iv-form').close();
+            tooLate();
+          }
+        });
       });
       grid.appendChild(b);
     });
@@ -276,7 +297,7 @@
           refresh();
         } else if (d.error === 'taken') {
           $('iv-form').close();
-          alertTaken();
+          tooLate();
         } else {
           showErr('Something went wrong — try again, or email dbi@cathedralcatholic.org.');
         }
@@ -290,15 +311,15 @@
     var er = $('iv-err'); er.textContent = msg; er.hidden = false;
     $('iv-submit').disabled = false;
   }
-  function alertTaken() {
+  function tooLate() {
     refresh();
-    var er = document.createElement('p');
     $('iv-day-title').textContent = 'That slot was just taken — pick another.';
+    $('iv-slots-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   $('iv-done-close').addEventListener('click', function () { $('iv-done').close(); });
 
   // Keep availability honest while the page sits open.
-  setInterval(function () { if (!$('iv-book').hidden) refresh(); }, 30000);
+  setInterval(function () { if (!$('iv-book').hidden) refresh(); }, 10000);
 })();
 </script>
 </body>
