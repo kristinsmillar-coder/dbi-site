@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0A0A0B">
-<link rel="stylesheet" href="assets/styles.css?v=15">
+<link rel="stylesheet" href="assets/styles.css?v=16">
 <title>Interviews — Dons Business Institute</title>
-<meta name="description" content="Flagship Program interview sign-ups.">
+<meta name="description" content="Flagship Program interviews — look up your slot.">
 <meta name="robots" content="noindex">
 </head>
 <body class="subpage">
@@ -33,10 +33,10 @@
 <section id="gate" class="iv-gate-sect">
   <div class="wrap">
     <p class="eyebrow">The Flagship Program · September 1–4</p>
-    <h1>Interview sign-ups.</h1>
+    <h1>Your interview.</h1>
     <p class="lede narrow">
-      If you were invited to interview, you received a password. Enter it to pick
-      your slot.
+      Sign-ups are closed — every slot is booked. Enter the interview password to
+      look up your time.
     </p>
     <form class="iv-pass" id="iv-pass" autocomplete="off">
       <input type="password" id="iv-pw" placeholder="PASSWORD" aria-label="Interview password" required>
@@ -46,31 +46,34 @@
   </div>
 </section>
 
-<!-- ── The booking flow (revealed by the gate) ── -->
-<section class="iv-book" id="iv-book" hidden>
+<!-- ── The lookup (revealed by the gate) ── -->
+<section class="iv-book" id="iv-look" hidden>
   <div class="wrap">
-    <p class="eyebrow">Step 1 · Pick a day</p>
-    <h2 id="days">Pick your day.</h2>
+    <p class="eyebrow">Find your slot</p>
+    <h2>Look up your interview.</h2>
     <p class="lede narrow">
-      Interviews are <strong>six minutes</strong>, in person. Slots disappear as
-      they&rsquo;re booked — what you see is what&rsquo;s left.
+      Type the email you signed up with — your slot comes straight from the
+      booking record.
     </p>
-    <div class="iv-days" id="iv-days"></div>
+    <form class="iv-pass" id="iv-lookup">
+      <input type="email" id="iv-email" placeholder="YOUR EMAIL" aria-label="The email you signed up with" required autocomplete="email">
+      <button class="btn primary" type="submit" id="iv-find">Find it</button>
+    </form>
 
-    <div class="iv-slots-wrap" id="iv-slots-wrap" hidden>
-      <p class="eyebrow" style="margin-top:3rem">Step 2 · Pick a slot</p>
-      <h2 id="iv-day-title"></h2>
-      <div class="iv-slots" id="iv-slots"></div>
-      <p class="fine">All times PM. A ten-minute break runs 3:50&ndash;4:00.</p>
-    </div>
+    <div class="iv-result" id="iv-result" hidden></div>
+
+    <p class="fine" style="margin-top:2.5rem">
+      Interviews are six minutes. Arrive a few minutes early, and be yourself —
+      we&rsquo;re not testing what you already know about business.
+    </p>
   </div>
 </section>
 
 <section class="iv-note">
   <div class="wrap">
     <p class="fine">
-      Trouble signing up? Email <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>
-      with your name and three slots that work, and we&rsquo;ll book you by hand.
+      Can&rsquo;t find your booking, or need to reschedule? Email
+      <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.
     </p>
   </div>
 </section>
@@ -95,41 +98,6 @@
   </div>
 </footer>
 
-<!-- ── The booking form ── -->
-<dialog class="fin-gate iv-form" id="iv-form">
-  <p class="eyebrow">Step 3 · Your details</p>
-  <h2 id="iv-form-title">Book this slot.</h2>
-  <form id="iv-details">
-    <label>Name <input name="name" required autocomplete="name"></label>
-    <label>School <input name="school" required placeholder="Cathedral Catholic, or your current school"></label>
-    <label>Phone <input name="phone" type="tel" required autocomplete="tel"></label>
-    <label>Email <input name="email" type="email" required autocomplete="email"></label>
-    <label>Graduation year
-      <select name="gradYear" required>
-        <option value="" selected disabled>Choose&hellip;</option>
-        <option>2027</option><option>2028</option><option>2029</option><option>2030</option>
-      </select>
-    </label>
-    <label>Parent name <input name="parentName" required></label>
-    <label>Parent email <input name="parentEmail" type="email" required></label>
-    <label>Parent phone <input name="parentPhone" type="tel" required></label>
-    <div class="actions">
-      <button class="btn primary" type="submit" id="iv-submit">Book my interview</button>
-      <button class="btn" type="button" id="iv-cancel">Cancel</button>
-    </div>
-    <p class="fine iv-err" id="iv-err" hidden></p>
-  </form>
-</dialog>
-
-<dialog class="fin-gate iv-done" id="iv-done">
-  <p class="eyebrow eyebrow--gold" style="color:var(--gold)">Booked</p>
-  <h2>See you there.</h2>
-  <p id="iv-done-when" class="lede"></p>
-  <p>A confirmation is on its way to you and your parent. Six minutes — arrive a
-     few early, and be yourself.</p>
-  <div class="actions"><button class="btn primary" id="iv-done-close">Done</button></div>
-</dialog>
-
 <script>
 // Phone menu (same as every page).
 (function () {
@@ -148,36 +116,20 @@
 })();
 
 (function () {
-  // ── Wiring: paste the Apps Script Web app URL (ends in /exec) here. ──
   var BACKEND = 'https://script.google.com/macros/s/AKfycbyr9wBfiSPzpP6_0KvxD6rRUuaxgj_jj4Hq1DmAybUb58q378bk1p3vhFtZInJQmr54/exec';
-
   var PASSWORD = 'DBI2026FLAGSHIP';
-
-  var FULL = ['2:30–2:36','2:38–2:44','2:46–2:52','2:54–3:00','3:02–3:08',
-              '3:10–3:16','3:18–3:24','3:26–3:32','3:34–3:40','3:42–3:48',
-              '4:00–4:06','4:08–4:14','4:16–4:22','4:24–4:30','4:32–4:38',
-              '4:40–4:46','4:48–4:54','4:56–5:02'];
-  var DAYS = [
-    { id: 'tue', label: 'Tuesday',   date: 'September 1', times: FULL.filter(function (t) { return t !== '4:08–4:14'; }) },
-    { id: 'wed', label: 'Wednesday', date: 'September 2', times: FULL },
-    { id: 'thu', label: 'Thursday',  date: 'September 3', times: FULL.slice(0, 17) },
-    { id: 'fri', label: 'Friday',    date: 'September 4', times: FULL.slice(0, 17) },
-  ];
-
-  var booked = {};          // slotId -> true
-  var current = null;       // selected day object
-  var pending = null;       // slot being booked {id, day, time}
+  var DAY_NAMES = { tue: 'Tuesday, September 1', wed: 'Wednesday, September 2',
+                    thu: 'Thursday, September 3', fri: 'Friday, September 4' };
 
   var $ = function (id) { return document.getElementById(id); };
+  var esc = function (t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
 
   // ── gate ──
   var unlocked = false;
   try { unlocked = sessionStorage.getItem('dbi-iv') === '1'; } catch (e) {}
-  function unlock() {
-    $('gate').hidden = true;
-    $('iv-book').hidden = false;
-    refresh();
-  }
+  function unlock() { $('gate').hidden = true; $('iv-look').hidden = false; }
   if (unlocked) unlock();
   $('iv-pass').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -190,136 +142,44 @@
     }
   });
 
-  // ── availability ──
-  var loaded = false;
-  function refresh() {
-    if (!BACKEND) { loaded = true; render(); return; }
-    if (!loaded) $('iv-days').innerHTML =
-      '<p class="fine">Checking live availability&hellip;</p>';
-    return fetch(BACKEND, { cache: 'no-store' })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        booked = {};
-        (d.booked || []).forEach(function (id) { booked[id] = true; });
-        loaded = true;
-        render();
-        return true;
-      })
-      .catch(function () {
-        if (!loaded) {
-          $('iv-days').innerHTML =
-            '<p class="fine">Couldn&rsquo;t load availability &mdash; retrying&hellip;</p>';
-          setTimeout(refresh, 3000);
-        }
-        return false;
-      });
-  }
-
-  function remaining(day) {
-    return day.times.filter(function (t) { return !booked[day.id + '|' + t]; }).length;
-  }
-
-  // ── render ──
-  function render() {
-    var days = $('iv-days');
-    days.innerHTML = '';
-    DAYS.forEach(function (d) {
-      var left = remaining(d);
-      var b = document.createElement('button');
-      b.className = 'iv-day' + (current === d ? ' on' : '');
-      b.disabled = left === 0;
-      b.innerHTML = '<span class="when">' + d.label + '</span>' +
-                    '<strong>' + d.date + '</strong>' +
-                    '<span class="iv-left">' + (left === 0 ? 'Full' : left + ' slots left') + '</span>';
-      b.addEventListener('click', function () { current = d; render(); showSlots(); });
-      days.appendChild(b);
-    });
-    if (current) showSlots();
-  }
-
-  function showSlots() {
-    $('iv-slots-wrap').hidden = false;
-    $('iv-day-title').textContent = current.label + ', ' + current.date + '.';
-    var grid = $('iv-slots');
-    grid.innerHTML = '';
-    current.times.forEach(function (t) {
-      if (booked[current.id + '|' + t]) return;   // taken slots simply go away
-      var b = document.createElement('button');
-      b.className = 'iv-slot';
-      b.textContent = t;
-      b.addEventListener('click', function () {
-        pending = { id: current.id + '|' + t, day: current.id, time: t };
-        $('iv-form-title').innerHTML = current.label + ', ' + current.date + '<br>' + t + ' PM';
-        $('iv-err').hidden = true;
-        $('iv-form').showModal();
-        // Re-check while they read the form: if the slot just went, tell
-        // them BEFORE they type everything in.
-        var mine = pending.id;
-        var check = refresh();
-        if (check) check.then(function () {
-          if (pending && pending.id === mine && booked[mine]) {
-            $('iv-form').close();
-            tooLate();
-          }
-        });
-      });
-      grid.appendChild(b);
-    });
-    if (!grid.children.length) grid.innerHTML = '<p class="fine">This day is fully booked.</p>';
-    $('iv-slots-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // ── booking ──
-  $('iv-cancel').addEventListener('click', function () { $('iv-form').close(); });
-  $('iv-details').addEventListener('submit', function (e) {
+  // ── lookup ──
+  $('iv-lookup').addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!BACKEND) {
-      var er = $('iv-err');
-      er.textContent = 'Sign-ups haven’t opened yet — check back soon.';
-      er.hidden = false;
-      return;
-    }
-    var f = e.target;
-    var body = new URLSearchParams();
-    body.set('slot', pending.id); body.set('day', pending.day); body.set('time', pending.time);
-    ['name','school','phone','email','gradYear','parentName','parentEmail','parentPhone']
-      .forEach(function (k) { body.set(k, f.elements[k].value); });
-    $('iv-submit').disabled = true;
-    fetch(BACKEND, { method: 'POST', body: body })
+    var email = $('iv-email').value.trim();
+    var box = $('iv-result');
+    box.hidden = false;
+    box.className = 'iv-result';
+    box.innerHTML = '<p class="fine">Looking&hellip;</p>';
+    $('iv-find').disabled = true;
+    fetch(BACKEND + '?email=' + encodeURIComponent(email), { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        $('iv-submit').disabled = false;
-        if (d.ok) {
-          $('iv-form').close();
-          f.reset();
-          $('iv-done-when').textContent = current.label + ', ' + current.date + ' · ' + pending.time + ' PM';
-          $('iv-done').showModal();
-          refresh();
-        } else if (d.error === 'taken') {
-          $('iv-form').close();
-          tooLate();
-        } else {
-          showErr('Something went wrong — try again, or email dbi@cathedralcatholic.org.');
+        $('iv-find').disabled = false;
+        if (!d.found) {
+          box.innerHTML = '<p class="fine">The lookup is still being switched on — try again ' +
+            'in a few minutes, or email <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.</p>';
+          return;
         }
+        if (!d.found.length) {
+          box.innerHTML = '<p class="fine">No interview found under <strong>' + esc(email) +
+            '</strong>. Try the exact email you signed up with — or email ' +
+            '<a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.</p>';
+          return;
+        }
+        box.className = 'iv-result on';
+        box.innerHTML = d.found.map(function (f) {
+          return '<p class="when" style="color:var(--gold)">Confirmed' +
+                 (f.name ? ' · ' + esc(f.name) : '') + '</p>' +
+                 '<h2 style="margin:0.5rem 0 0.25rem">' + (DAY_NAMES[f.day] || esc(f.day)) + '</h2>' +
+                 '<p class="lede">' + esc(f.time) + ' PM</p>';
+        }).join('<hr style="border:0;border-top:1px solid #241f20;margin:1.5rem 0">');
       })
       .catch(function () {
-        $('iv-submit').disabled = false;
-        showErr('Couldn’t reach the sign-up server — check your connection and try again.');
+        $('iv-find').disabled = false;
+        box.innerHTML = '<p class="fine">Couldn&rsquo;t reach the booking record — check your ' +
+          'connection and try again.</p>';
       });
   });
-  function showErr(msg) {
-    var er = $('iv-err'); er.textContent = msg; er.hidden = false;
-    $('iv-submit').disabled = false;
-  }
-  function tooLate() {
-    refresh();
-    $('iv-day-title').textContent = 'That slot was just taken — pick another.';
-    $('iv-slots-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  $('iv-done-close').addEventListener('click', function () { $('iv-done').close(); });
-
-  // Keep availability honest while the page sits open.
-  setInterval(function () { if (!$('iv-book').hidden) refresh(); }, 10000);
 })();
 </script>
 </body>

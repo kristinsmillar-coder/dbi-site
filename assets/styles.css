@@ -1499,3 +1499,13 @@ body:not(.fin) .fork strong { color: var(--paper); }
 .iv-form input:focus, .iv-form select:focus { outline: none; border-color: var(--gold); }
 .iv-form .actions { margin-top: 1.5rem; }
 .iv-err { color: var(--red); }
+
+/* ── interview lookup result card ── */
+.iv-result { margin-top: 2.5rem; }
+.iv-result.on {
+  border: 1px solid var(--gold); border-top-width: 3px;
+  background: var(--ground-2);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  max-width: 30rem;
+}
+.iv-result h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }

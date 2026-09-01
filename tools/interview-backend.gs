@@ -51,7 +51,23 @@ function out_(obj) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+function doGet(e) {
+  var p = (e && e.parameter) || {};
+  if (p.email) {
+    var q = String(p.email).trim().toLowerCase();
+    var found = [];
+    var sh = sheet_();
+    var n = sh.getLastRow();
+    if (n >= 2) {
+      sh.getRange(2, 1, n - 1, 12).getValues().forEach(function (r) {
+        if (String(r[6]).trim().toLowerCase() === q ||
+            String(r[9]).trim().toLowerCase() === q) {   // student or parent email
+          found.push({ day: String(r[1]), time: String(r[2]), name: String(r[3]) });
+        }
+      });
+    }
+    return out_({ ok: true, found: found });
+  }
   return out_({ ok: true, booked: bookedIds_() });
 }
 
