@@ -1,0 +1,68 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dons Business Institute//Finance 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+BEGIN:STANDARD
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:dbi-finance-2026-1@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20260929T143000
+DTEND;TZID=America/Los_Angeles:20260929T161500
+SUMMARY:DBI Finance - Session 1 - Personal Finance and Wealth Building
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:DBI Finance Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-finance-2026-2@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261021T143000
+DTEND;TZID=America/Los_Angeles:20261021T161500
+SUMMARY:DBI Finance - Session 2 - Markets and Investing
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:DBI Finance Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-finance-2026-3@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261117T143000
+DTEND;TZID=America/Los_Angeles:20261117T161500
+SUMMARY:DBI Finance - Session 3 - Corporate Finance
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:DBI Finance Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-finance-2026-4@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261118T143000
+DTEND;TZID=America/Los_Angeles:20261118T163000
+SUMMARY:DBI Finance - Working Session - Capstone Work Day
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:DBI Finance Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-finance-2026-5@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:DBI Finance - Semester 1 Capstone: Financial Literacy Day
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:DBI Finance Program capstone. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+END:VCALENDAR
