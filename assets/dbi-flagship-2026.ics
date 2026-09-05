@@ -1,0 +1,77 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dons Business Institute//Flagship 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+BEGIN:STANDARD
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:dbi-flagship-2026-1@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20260922T144500
+DTEND;TZID=America/Los_Angeles:20260922T183000
+SUMMARY:DBI Flagship - Session 1
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-flagship-2026-2@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261013T144500
+DTEND;TZID=America/Los_Angeles:20261013T183000
+SUMMARY:DBI Flagship - Session 2
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-flagship-2026-3@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261020T144500
+DTEND;TZID=America/Los_Angeles:20261020T183000
+SUMMARY:DBI Flagship - Session 3
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-flagship-2026-4@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261119T144500
+DTEND;TZID=America/Los_Angeles:20261119T183000
+SUMMARY:DBI Flagship - Session 4 - Case Practice
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-flagship-2026-5@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261201T144500
+DTEND;TZID=America/Los_Angeles:20261201T183000
+SUMMARY:DBI Flagship - Case Competition Rehearsal
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+BEGIN:VEVENT
+UID:dbi-flagship-2026-6@cathedralcatholicdbi.org
+DTSTAMP:20260831T120000Z
+DTSTART;TZID=America/Los_Angeles:20261202T144500
+DTEND;TZID=America/Los_Angeles:20261202T200000
+SUMMARY:DBI Flagship - Case Competition
+LOCATION:Cathedral Catholic High School
+DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+END:VEVENT
+END:VCALENDAR
