@@ -1,0 +1,48 @@
+{
+  "index": {
+    "title": "Discover DBI",
+    "description": "Learn business, build ideas, and find your purpose at the Dons Business Institute at Cathedral Catholic High School.",
+    "body_class": "home",
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/descent.css\">",
+    "extra_scripts": "<script src=\"assets/descent.js\"></script>"
+  },
+  "course": {
+    "title": "The Flagship Program",
+    "description": "Explore business and entrepreneurship through real company challenges, mentors, and the DBI Startup Summit."
+  },
+  "finance": {
+    "title": "The Finance Program",
+    "description": "Explore personal finance, markets, and investing through DBI's dedicated yearlong Finance Program."
+  },
+  "usd": {
+    "title": "Our USD Partnership",
+    "description": "Discover DBI's University of San Diego partnership, MBA mentorship, and college coursework opportunities."
+  },
+  "join": {
+    "title": "Join Our Community",
+    "description": "Find your path at DBI as a Cathedral Catholic student, mentor, speaker, or supporter."
+  },
+  "donate": {
+    "title": "Support DBI",
+    "description": "Support hands-on business education and student entrepreneurship through Cathedral Catholic's giving office."
+  },
+  "interviews": {
+    "title": "Your Interview",
+    "description": "Look up your scheduled Flagship Program interview.",
+    "extra_scripts": "<script src=\"assets/interviews.js\"></script>"
+  },
+  "update": {
+    "title": "An Update on Your Application",
+    "description": "Your Dons Business Institute application update.",
+    "body_class": "admissions",
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/update.css\">",
+    "extra_scripts": "<script src=\"assets/update.js\"></script>"
+  },
+  "update-finance": {
+    "title": "Your Finance Application Update",
+    "description": "Your Dons Business Institute Finance Program application update.",
+    "body_class": "admissions",
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/update-finance.css\">",
+    "extra_scripts": "<script src=\"assets/update-finance.js\"></script>"
+  }
+}

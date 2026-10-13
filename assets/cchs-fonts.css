@@ -1,0 +1,85 @@
+/* Font definitions used by the CCHS public website; hosted by Adobe Fonts. */
+@font-face {
+  font-display: swap;
+  font-family: big-caslon-fb;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(https://use.typekit.net/af/114c74/00000000000000007736b573/31/l?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/114c74/00000000000000007736b573/31/d?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/114c74/00000000000000007736b573/31/a?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: big-caslon-fb;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(https://use.typekit.net/af/917a00/0000000000000000774a672d/31/l?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/917a00/0000000000000000774a672d/31/d?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/917a00/0000000000000000774a672d/31/a?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: neue-haas-grotesk-display;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/l?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/d?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/a?fvd=n4&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: neue-haas-grotesk-display;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url(https://use.typekit.net/af/174ae3/00000000000000007735bb5a/31/l?fvd=n5&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/174ae3/00000000000000007735bb5a/31/d?fvd=n5&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/174ae3/00000000000000007735bb5a/31/a?fvd=n5&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: neue-haas-grotesk-display;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url(https://use.typekit.net/af/c7a282/00000000000000007735bb62/31/l?fvd=n6&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/c7a282/00000000000000007735bb62/31/d?fvd=n6&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/c7a282/00000000000000007735bb62/31/a?fvd=n6&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: neue-haas-grotesk-display;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/l?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/d?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/a?fvd=n7&primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&v=3)
+      format("opentype");
+}

@@ -1,0 +1,49 @@
+
+<!-- ── The gate ── -->
+<section id="gate" class="iv-gate-sect">
+  <div class="wrap">
+    <p class="eyebrow">The Flagship Program · September 1–4</p>
+    <h1>Your interview.</h1>
+    <p class="lede narrow">
+      Sign-ups are closed — every slot is booked. Enter the interview password to
+      look up your time.
+    </p>
+    <form class="iv-pass" id="iv-pass" autocomplete="off">
+      <input type="password" id="iv-pw" placeholder="PASSWORD" aria-label="Interview password" required>
+      <button class="btn primary" type="submit">Enter</button>
+    </form>
+    <p class="fine iv-wrong" id="iv-wrong" hidden>That&rsquo;s not it — check the invitation email.</p>
+  </div>
+</section>
+
+<!-- ── The lookup (revealed by the gate) ── -->
+<section class="iv-book" id="iv-look" hidden>
+  <div class="wrap">
+    <p class="eyebrow">Find your slot</p>
+    <h2>Look up your interview.</h2>
+    <p class="lede narrow">
+      Type the email you signed up with — your slot comes straight from the
+      booking record.
+    </p>
+    <form class="iv-pass" id="iv-lookup">
+      <input type="email" id="iv-email" placeholder="YOUR EMAIL" aria-label="The email you signed up with" required autocomplete="email">
+      <button class="btn primary" type="submit" id="iv-find">Find it</button>
+    </form>
+
+    <div class="iv-result" id="iv-result" hidden></div>
+
+    <p class="fine" style="margin-top:2.5rem">
+      Interviews are six minutes. Arrive a few minutes early, and be yourself —
+      we&rsquo;re not testing what you already know about business.
+    </p>
+  </div>
+</section>
+
+<section class="iv-note">
+  <div class="wrap">
+    <p class="fine">
+      Can&rsquo;t find your booking, or need to reschedule? Email
+      <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.
+    </p>
+  </div>
+</section>

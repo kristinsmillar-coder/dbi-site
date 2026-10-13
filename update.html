@@ -1,136 +1,94 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0A0A0B">
-<link rel="stylesheet" href="assets/styles.css?v=16">
-<title>An update — Dons Business Institute</title>
-<meta name="description" content="An update on your Dons Business Institute application.">
-<meta name="robots" content="noindex, nofollow">
-<style>
-/* ── the acceptance page ─────────────────────────────────────────────── */
-.ac-splash {
-  min-height: 100svh;
-  display: grid; place-items: center;
-  text-align: center;
-  padding: var(--gutter);
-  position: relative;
-  overflow: hidden;
-}
-#confetti {
-  position: fixed; inset: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 60;
-}
-.ac-splash-inner > * { opacity: 0; }
-.ac-tease {
-  color: var(--dim-on-dark);
-  animation: acFade 0.8s ease 0.3s forwards;
-}
-.ac-title {
-  font-size: clamp(3.4rem, 13vw, 9rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin: 0.5rem 0 1.5rem;
-  animation: acSlam 0.7s cubic-bezier(0.16, 1.2, 0.3, 1) 1.1s forwards;
-}
-.ac-title em { font-style: normal; color: var(--gold); }
-.ac-sub {
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  color: var(--paper);
-  max-width: 34rem; margin: 0 auto;
-  animation: acFade 0.9s ease 1.9s forwards;
-}
-.ac-hint {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  margin-top: 3rem;
-  font: 400 0.72rem/1 var(--mono);
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--dim-on-dark);
-  animation: acFade 0.9s ease 2.6s forwards;
-}
-.ac-hint i { font-style: normal; animation: acBob 1.6s ease-in-out 3.4s infinite; }
-@keyframes acFade { to { opacity: 1; } }
-@keyframes acSlam {
-  from { opacity: 0; transform: translateY(0.35em) scale(0.92); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes acBob { 50% { transform: translateY(5px); } }
-@media (prefers-reduced-motion: reduce) {
-  .ac-splash-inner > * { opacity: 1; animation: none; }
-}
-
-/* the letter, on paper */
-.ac-letter-sect { padding: var(--stack) var(--gutter); }
-.ac-letter {
-  max-width: 46rem; margin: 0 auto;
-  background: var(--paper); color: var(--ink);
-  padding: clamp(2rem, 6vw, 4.5rem);
-  border-top: 4px solid var(--red);
-}
-.ac-letter img.ac-mark { width: min(240px, 60%); height: auto; margin-bottom: 2.5rem; }
-.ac-letter h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
-.ac-letter p { margin: 0 0 1.15rem; }
-.ac-letter .fine { color: var(--dim); }
-.ac-letter strong { font-weight: 700; }
-.ac-gold { color: var(--gold-ink); }
-.ac-dates-title {
-  font-family: var(--display);
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
-  margin: 2.5rem 0 0.5rem;
-}
-.ac-dates { list-style: none; margin: 1rem 0 1.5rem; padding: 0; }
-.ac-dates li {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 1rem; align-items: baseline;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #DBD2C8;
-}
-.ac-dates li:first-child { border-top: 1px solid #DBD2C8; }
-.ac-dates .d { font-weight: 700; }
-.ac-dates .t {
-  font: 400 0.72rem/1.5 var(--mono);
-  letter-spacing: 0.08em; color: var(--dim);
-  white-space: nowrap;
-}
-.ac-sign { margin-top: 2.5rem; }
-.ac-sign .who {
-  font: 400 0.72rem/1.6 var(--mono);
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--dim);
-}
-/* scroll-rise */
-.rise { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.rise.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; transition: none; } }
-
-/* the year ahead: photo strip */
-.ac-year { padding: var(--stack) var(--gutter); max-width: 72rem; margin: 0 auto; }
-.ac-year h2 { max-width: 20ch; }
-.ac-photos {
-  display: grid; gap: clamp(1rem, 2.5vw, 2rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-  margin-top: 2.5rem;
-}
-.ac-photos figure { margin: 0; }
-.ac-photos img { width: 100%; height: 16rem; object-fit: cover; display: block; }
-.ac-photos figcaption {
-  font: 400 0.72rem/1.5 var(--mono);
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--dim-on-dark);
-  margin-top: 0.8rem;
-}
-/* closing */
-.ac-close { padding: var(--stack) var(--gutter) calc(var(--stack) * 1.2); text-align: center; }
-.ac-close h2 { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 1rem; }
-.ac-close .motto { display: block; margin: 1.5rem 0 2.5rem; }
-</style>
-</head>
-<body class="subpage">
-
-<main>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>An Update on Your Application | Dons Business Institute</title>
+    <meta name="description" content="Your Dons Business Institute application update." />
+    <meta name="theme-color" content="#a81b1b" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link
+      rel="icon"
+      href="assets/brand/cchs-wordmark.svg"
+      type="image/svg+xml"
+    />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="stylesheet" href="assets/cchs-fonts.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/update.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body id="top" class="admissions">
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="masthead" id="topbar">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Dons Business Institute home"
+        ><img
+          src="assets/brand/cchs-logo-white.svg"
+          alt="Cathedral Catholic High School"
+          width="260"
+          height="90"
+      /></a>
+      <nav class="quick-nav" aria-label="Quick links">
+        <a href="join.html">Apply</a><a href="donate.html">Make a gift</a
+        ><a
+          href="https://www.cathedralcatholic.org/"
+          target="_blank"
+          rel="noopener"
+          >CCHS main site ↗</a
+        >
+      </nav>
+    </header>
+    <button
+      class="menu-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+    <dialog class="site-menu" id="site-menu" aria-label="Main navigation">
+      <div class="menu-top">
+        <a href="index.html">Dons Business Institute</a
+        ><button class="menu-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="menu-layout">
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home <span>→</span></a
+          ><a href="course.html">The Flagship Program <span>→</span></a
+          ><a href="finance.html">The Finance Program <span>→</span></a
+          ><a href="usd.html">USD Partnership <span>→</span></a
+          ><a href="join.html">Join our community <span>→</span></a
+          ><a href="donate.html">Support DBI <span>→</span></a
+          ><a href="interviews.html">Interview lookup <span>→</span></a>
+        </nav>
+        <div class="menu-promos">
+          <a href="course.html"
+            ><img src="assets/img/gallery-pitch.jpg" alt="" /><span
+              >The Flagship<br />Program</span
+            ><i aria-hidden="true">→</i></a
+          >
+          <a href="finance.html"
+            ><img src="assets/img/s1-finance.jpg" alt="" /><span
+              >The Finance<br />Program</span
+            ><i aria-hidden="true">→</i></a
+          >
+          <a href="usd.html"
+            ><img src="assets/img/lecture-hall.jpg" alt="" /><span
+              >Our USD<br />Partnership</span
+            ><i aria-hidden="true">→</i></a
+          >
+          <a href="join.html#professionals"
+            ><img src="assets/img/sp3-nahama.jpg" alt="" /><span
+              >Become<br />a mentor</span
+            ><i aria-hidden="true">→</i></a
+          >
+        </div>
+      </div>
+    </dialog>
+    <main id="main-content" tabindex="-1">
 <section class="ac-splash">
   <canvas id="confetti" aria-hidden="true"></canvas>
   <div class="ac-splash-inner">
@@ -232,82 +190,60 @@
   </p>
 </section>
 </main>
-
-<script>
-// ── confetti: canvas, no dependencies, brand colors only ──
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var cv = document.getElementById('confetti');
-  var cx = cv.getContext('2d');
-  var W, H, parts = [], running = false;
-  function size() {
-    W = cv.width = innerWidth * devicePixelRatio;
-    H = cv.height = innerHeight * devicePixelRatio;
-  }
-  size(); addEventListener('resize', size);
-  var COLORS = ['#BA0C2F', '#FFCB30', '#E8E4E1', '#8E0823', '#E6B62B'];
-  function burst(x, y, n, spread, power) {
-    for (var i = 0; i < n; i++) {
-      var a = -Math.PI / 2 + (Math.random() - 0.5) * spread;
-      var v = (0.4 + Math.random() * 0.6) * power;
-      parts.push({
-        x: x, y: y,
-        vx: Math.cos(a) * v, vy: Math.sin(a) * v,
-        w: (4 + Math.random() * 5) * devicePixelRatio,
-        h: (7 + Math.random() * 7) * devicePixelRatio,
-        r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.25,
-        c: COLORS[(Math.random() * COLORS.length) | 0],
-        life: 1, decay: 0.003 + Math.random() * 0.004
-      });
-    }
-    if (!running) { running = true; requestAnimationFrame(tick); }
-  }
-  function tick() {
-    cx.clearRect(0, 0, W, H);
-    var g = 0.16 * devicePixelRatio;
-    parts = parts.filter(function (p) { return p.life > 0 && p.y < H + 40; });
-    parts.forEach(function (p) {
-      p.vy += g; p.vx *= 0.992; p.vy *= 0.992;
-      p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life -= p.decay;
-      cx.save();
-      cx.globalAlpha = Math.max(0, Math.min(1, p.life * 1.6));
-      cx.translate(p.x, p.y); cx.rotate(p.r);
-      cx.fillStyle = p.c;
-      cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * (0.6 + 0.4 * Math.sin(p.r * 3)));
-      cx.restore();
-    });
-    if (parts.length) requestAnimationFrame(tick); else running = false;
-  }
-  var P = devicePixelRatio;
-  // The reveal: two corner cannons as the title slams in, then a center pop
-  // and a soft rain. Timed to the CSS choreography.
-  setTimeout(function () {
-    burst(0.08 * W, H, 90, 1.1, 26 * P);
-    burst(0.92 * W, H, 90, 1.1, 26 * P);
-  }, 1150);
-  setTimeout(function () { burst(0.5 * W, 0.42 * H, 70, Math.PI * 2, 9 * P); }, 1500);
-  setTimeout(function () {
-    var i = 0, rain = setInterval(function () {
-      burst(Math.random() * W, -20, 8, 0.6, 4 * P);
-      if (++i > 14) clearInterval(rain);
-    }, 220);
-  }, 1900);
-})();
-
-// ── scroll-rise reveals ──
-(function () {
-  var els = [].slice.call(document.querySelectorAll('.rise'));
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(function (el) { el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  els.forEach(function (el) { io.observe(el); });
-})();
-</script>
-</body>
+    <footer class="site-footer">
+      <img
+        class="footer-palm"
+        src="assets/brand/palm.png"
+        alt=""
+        loading="lazy"
+      /><img
+        class="footer-dove"
+        src="assets/brand/dove.png"
+        alt=""
+        loading="lazy"
+      />
+      <div class="footer-main">
+        <h2>Find yourself at<br /><em>Dons Business Institute</em></h2>
+        <div class="footer-actions">
+          <a href="mailto:dbi@cathedralcatholic.org">Contact <span>→</span></a
+          ><a href="join.html">Apply <span>→</span></a
+          ><a href="donate.html">Donate <span>→</span></a>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <span class="footer-symbol" aria-hidden="true">✉</span
+            ><a href="mailto:dbi@cathedralcatholic.org"
+              >dbi@cathedralcatholic.org</a
+            >
+          </div>
+          <div>
+            <span class="footer-symbol" aria-hidden="true">⌖</span>
+            <p>5555 Del Mar Heights Rd,<br />San Diego, CA 92130</p>
+            <a
+              href="https://www.cathedralcatholic.org/"
+              target="_blank"
+              rel="noopener"
+              >Cathedral Catholic High School ↗</a
+            >
+          </div>
+          <nav aria-label="Footer">
+            <span class="footer-symbol" aria-hidden="true">↗</span
+            ><a href="course.html">The Flagship Program</a
+            ><a href="finance.html">The Finance Program</a
+            ><a href="usd.html">USD Partnership</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-base">
+        <a class="back-top" href="#top">↑ &nbsp; Back to top</a>
+        <p>
+          Dons Business Institute<br /><strong
+            >Cathedral Catholic High School</strong
+          >
+        </p>
+        <p>© 2026 Dons Business Institute</p>
+      </div>
+    </footer>
+    <script src="assets/update.js"></script>
+  </body>
 </html>

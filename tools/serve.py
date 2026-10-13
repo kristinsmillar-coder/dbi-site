@@ -81,4 +81,4 @@ if __name__ == "__main__":
     os.chdir(ROOT)
     handler = partial(RangeHandler, directory=ROOT)
     print(f"Serving {ROOT} on http://localhost:{PORT}/  (Range-capable)")
-    ThreadingHTTPServer(("", PORT), handler).serve_forever()
+    ThreadingHTTPServer(("127.0.0.1", PORT), handler).serve_forever()

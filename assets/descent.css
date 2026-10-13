@@ -1,0 +1,279 @@
+/* The original DBI camera movement, framed like Cathedral's homepage hero. */
+.descent {
+  position: relative;
+  color: white;
+}
+.descent-stage {
+  position: relative;
+  height: 100svh;
+  min-height: 650px;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+}
+.descent-video,
+.frame-hold {
+  display: none;
+}
+.descent-video,
+.frame-hold,
+.descent-still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  pointer-events: none;
+}
+.hold-end {
+  opacity: 0;
+}
+.motion-film {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: #151410;
+  opacity: var(--film, 0);
+  pointer-events: none;
+}
+.descent-stage:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(#0005 0%, transparent 35%, #000b 100%);
+  pointer-events: none;
+}
+.descent-stage:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #000;
+  opacity: calc(var(--veil, 0) * 0.2 + var(--landing, 1) * 0.42);
+  pointer-events: none;
+}
+.stage-copy {
+  grid-area: 1/1;
+  align-self: end;
+  text-align: center;
+  width: 100%;
+  padding: 150px 30px 150px;
+  margin: auto auto 0;
+}
+.stage-copy .eyebrow {
+  font-size: 22px;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.stage-copy h1 {
+  font-size: clamp(48px, 6.3vw, 90px);
+  color: var(--gold);
+  line-height: 1.04;
+  margin: 0 auto 18px;
+  max-width: 1100px;
+}
+.hero-lede {
+  font-size: 23px;
+  margin: 0 auto 30px;
+}
+.stage-line {
+  font: 400 clamp(46px, 6.4vw, 90px)/1.08 var(--display);
+  margin: 0 auto;
+  max-width: 1050px;
+}
+.stage-line em {
+  color: var(--gold);
+}
+.stage-a,
+.stage-b,
+.intro-lockup {
+  display: none;
+}
+.stage-a,
+.stage-b {
+  align-self: center;
+  padding-bottom: 100px;
+}
+.intro-lockup {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  text-align: center;
+  padding: 150px 25px 108px;
+  align-content: end;
+  justify-items: center;
+}
+.intro-lockup .eyebrow {
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0 0 0;
+}
+.intro-title {
+  font: 400 clamp(72px, 8.4vw, 125px)/1.05 var(--display);
+  color: var(--gold);
+  margin: 0 0 22px;
+}
+.hero-progress {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 5px;
+}
+.hero-progress span {
+  width: 43px;
+  height: 4px;
+  background: #fff6;
+}
+.hero-progress span:first-child {
+  background: white;
+}
+.hero-description {
+  position: absolute;
+  bottom: 27px;
+  left: 32px;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 480px;
+  z-index: 2;
+}
+.skip-descent {
+  position: absolute;
+  right: 35px;
+  bottom: 30px;
+  font: 300 63px/1 var(--body);
+  color: white;
+  z-index: 3;
+  padding: 0 5px;
+}
+.descent a:focus-visible {
+  outline-color: white;
+}
+html.animate .descent {
+  height: 420vh;
+}
+html.animate .descent-stage {
+  position: sticky;
+  top: 0;
+}
+html.animate .descent-video,
+html.animate .frame-hold {
+  display: block;
+}
+html.animate .descent-still {
+  display: none;
+}
+html.animate .stage-a,
+html.animate .stage-b {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+}
+html.animate .stage-c {
+  opacity: 0;
+  pointer-events: none;
+}
+html.animate .intro-lockup {
+  display: grid;
+}
+@media (max-width: 760px) {
+  .descent-stage {
+    min-height: 590px;
+  }
+  .intro-lockup {
+    padding: 140px 24px 155px;
+  }
+  .intro-lockup .eyebrow {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .intro-title {
+    font-size: clamp(58px, 13vw, 86px);
+    margin-bottom: 22px;
+  }
+  .hero-progress {
+    gap: 12px;
+  }
+  .hero-progress span {
+    width: 35px;
+    height: 3px;
+  }
+  .hero-description {
+    left: 24px;
+    bottom: 35px;
+    max-width: calc(100% - 105px);
+    font-size: 13px;
+  }
+  .skip-descent {
+    right: 22px;
+    bottom: 34px;
+    font-size: 50px;
+  }
+  .stage-copy {
+    padding: 130px 25px 175px;
+  }
+  .stage-copy .eyebrow {
+    font-size: 14px;
+  }
+  .stage-copy h1 {
+    font-size: 48px;
+    max-width: 500px;
+  }
+  .hero-lede {
+    font-size: 19px;
+    margin-bottom: 25px;
+    max-width: 340px;
+  }
+  .stage-line {
+    font-size: 46px;
+  }
+  .stage-a,
+  .stage-b {
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+  html.animate .descent {
+    height: 420svh;
+  }
+}
+@media (max-height: 700px) and (min-width: 761px) {
+  .stage-copy h1 {
+    font-size: 65px;
+  }
+  .stage-copy {
+    padding-bottom: 125px;
+  }
+  .stage-copy .eyebrow {
+    font-size: 18px;
+  }
+  .hero-lede {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .stage-line {
+    font-size: 65px;
+  }
+  .intro-title {
+    font-size: 96px;
+  }
+  .intro-lockup {
+    padding-bottom: 110px;
+  }
+  .intro-lockup .eyebrow {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .descent-stage {
+    min-height: 760px;
+  }
+  .intro-lockup {
+    display: none;
+  }
+}
