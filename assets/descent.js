@@ -29,12 +29,16 @@
       introLastTime = null;
       return;
     }
-    if (introLastTime !== null) introElapsed += now - introLastTime;
+    if (introLastTime !== null) {
+      introElapsed =
+        (introElapsed + Math.max(0, now - introLastTime)) %
+        (introInterval * introWords.length);
+    }
     introLastTime = now;
     var next = Math.floor(introElapsed / introInterval) % introWords.length;
     if (next !== introIndex) {
-      introWords[introIndex].classList.remove("is-active");
       introWords[next].classList.add("is-active");
+      introWords[introIndex].classList.remove("is-active");
       introIndex = next;
     }
     var progress = (introElapsed % introInterval) / introInterval;
@@ -232,7 +236,7 @@
   measure();
 
   var lastWritten = -1;
-  (function tick(now = performance.now()) {
+  function tick(now) {
     requestAnimationFrame(tick);
     updateIntro(now);
     // Idle when the hero is far off-screen: these writes are pure tax on
@@ -318,5 +322,6 @@
       "--film",
       (Math.min(1, Math.min(current, 1 - current) * 5) * 0.34).toFixed(3),
     );
-  })();
+  }
+  requestAnimationFrame(tick);
 })();

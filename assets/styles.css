@@ -267,6 +267,9 @@ em {
   object-fit: cover;
   z-index: -2;
 }
+.menu-promos .summit-menu-photo {
+  object-position: center 12%;
+}
 .menu-promos > a:after {
   content: "";
   position: absolute;
@@ -1681,4 +1684,11 @@ em {
     max-width: 260px;
     margin: auto;
   }
+}
+
+.menu-layout nav > a.nav-subprogram {
+  font: 400 22px/1.35 var(--body);
+  padding-left: 24px;
+  margin-top: -12px;
+  gap: 12px;
 }
