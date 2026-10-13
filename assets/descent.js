@@ -11,7 +11,40 @@
   var vid = sect.querySelector(".descent-video");
   var stages = [].slice.call(sect.querySelectorAll(".stage-copy"));
   var hint = sect.querySelector(".intro-lockup");
-  var topbar = document.getElementById("topbar");
+  var introWords = hint ? hint.querySelectorAll(".intro-title > span") : [];
+  var introBars = hint ? hint.querySelectorAll(".hero-progress > span") : [];
+  var introElapsed = 0;
+  var introLastTime = null;
+  var introIndex = 0;
+  var introInterval = 5000;
+
+  // The title runs on time, independently of the scroll-controlled camera.
+  // Preserve its place while the tab or opening title is out of view.
+  document.addEventListener("visibilitychange", function () {
+    introLastTime = null;
+  });
+  function updateIntro(now) {
+    if (!introWords.length) return;
+    if (document.hidden || target > 0.105 || current > 0.105) {
+      introLastTime = null;
+      return;
+    }
+    if (introLastTime !== null) introElapsed += now - introLastTime;
+    introLastTime = now;
+    var next = Math.floor(introElapsed / introInterval) % introWords.length;
+    if (next !== introIndex) {
+      introWords[introIndex].classList.remove("is-active");
+      introWords[next].classList.add("is-active");
+      introIndex = next;
+    }
+    var progress = (introElapsed % introInterval) / introInterval;
+    introBars.forEach(function (bar, index) {
+      bar.style.setProperty(
+        "--progress",
+        index < introIndex ? 1 : index === introIndex ? progress : 0,
+      );
+    });
+  }
   var holdStart = sect.querySelector(".hold-start");
   var holdEnd = sect.querySelector(".hold-end");
   var duration = 0,
@@ -199,8 +232,9 @@
   measure();
 
   var lastWritten = -1;
-  (function tick() {
+  (function tick(now = performance.now()) {
     requestAnimationFrame(tick);
+    updateIntro(now);
     // Idle when the hero is far off-screen: these writes are pure tax on
     // every other animation on the page.
     if (window.scrollY > sect.offsetHeight + window.innerHeight) return;
