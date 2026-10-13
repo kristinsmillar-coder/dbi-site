@@ -1453,3 +1453,232 @@ em {
     transform: none;
   }
 }
+
+/* Flagship leads the institute; Finance is a supporting program. */
+.menu-layout nav > a.nav-secondary {
+  font: 400 20px/1.35 var(--body);
+  margin-top: 8px;
+}
+.flagship-feature {
+  min-height: 660px;
+}
+.flagship-feature::after {
+  background: linear-gradient(transparent 18%, #0009 60%, #000e);
+}
+.flagship-feature > img {
+  object-fit: contain;
+  background: #090909;
+  object-position: center 25%;
+}
+.school-feature .feature-description {
+  font: 400 22px/1.5 var(--body);
+  text-transform: none;
+  letter-spacing: 0;
+  max-width: 680px;
+  margin: 0 auto 26px;
+}
+.milestone-intro {
+  padding-bottom: 0;
+}
+.milestone-intro .section-heading {
+  margin-bottom: 0;
+}
+.editorial figcaption {
+  margin-top: 13px;
+  font-size: 14px;
+  color: var(--dim);
+}
+.summit-editorial figure img {
+  aspect-ratio: auto;
+  max-height: 680px;
+  object-fit: contain;
+}
+.summit-proof {
+  padding-top: 20px;
+  border-top: 1px solid var(--gold);
+  font-size: 17px;
+}
+.summit-proof strong {
+  display: block;
+  color: var(--red);
+  margin-bottom: 5px;
+}
+.admissions-feature {
+  background: var(--deep-red);
+  padding: 90px 0;
+  color: white;
+  text-align: center;
+}
+.admissions-feature .eyebrow {
+  color: #ead5a5;
+}
+.admissions-feature p:not(.eyebrow) {
+  max-width: 810px;
+  margin: 25px auto;
+  font-size: 21px;
+}
+.admissions-feature .btn {
+  margin-top: 10px;
+}
+.finance-aside {
+  padding: 60px 0;
+  border-bottom: 1px solid #d8ccb2;
+  background: #f4f0e7;
+}
+.finance-aside .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+}
+.finance-aside h2 {
+  font-size: 37px;
+}
+.finance-aside p:last-child {
+  max-width: 690px;
+  margin-bottom: 0;
+}
+.finance-aside .text-link {
+  flex-shrink: 0;
+}
+.finance-aside .eyebrow {
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px 35px;
+  padding: 23px 25px;
+  border-bottom: 1px solid #d8ccb2;
+  color: var(--red);
+  font-size: 17px;
+}
+.section-nav a:hover {
+  text-decoration: underline;
+}
+.event-detail {
+  margin-top: 50px;
+  padding-top: 35px;
+  border-top: 1px solid var(--gold);
+}
+.event-detail p:last-child {
+  max-width: 870px;
+  margin-bottom: 0;
+}
+.summit-results {
+  margin-top: 55px;
+  padding-top: 35px;
+  border-top: 1px solid var(--gold);
+}
+.summit-results dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin: 0;
+}
+.summit-results dt {
+  font-size: 14px;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.summit-results dd {
+  margin: 0;
+  font: 30px/1.15 var(--display);
+}
+.admissions-window {
+  padding: 30px 35px;
+  border-left: 4px solid var(--red);
+  background: #f2ead8;
+  max-width: 850px;
+  margin: 0 auto 50px;
+}
+.admissions-window p {
+  margin-bottom: 0;
+}
+.admissions-steps {
+  list-style: none;
+  margin: 0 0 35px;
+  padding: 0;
+}
+.admissions-steps li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 30px;
+  padding: 30px 0;
+  border-top: 1px solid #d8ccb2;
+}
+.admissions-steps li > span {
+  font: 42px var(--display);
+  color: var(--gold-ink);
+}
+.admissions-steps p {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+.finance-context {
+  padding-top: 45px;
+  text-align: center;
+}
+.finance-context p {
+  margin-bottom: 18px;
+}
+@media (max-width: 760px) {
+  .flagship-feature {
+    min-height: 550px;
+    height: 76svh;
+  }
+  .flagship-feature > img {
+    object-fit: contain;
+    object-position: center 15%;
+    background: #090909;
+  }
+  .school-feature .feature-description {
+    font-size: 18px;
+  }
+  .milestone-intro {
+    padding-top: 65px;
+  }
+  .admissions-feature {
+    padding: 65px 0;
+    text-align: left;
+  }
+  .admissions-feature p:not(.eyebrow) {
+    font-size: 18px;
+  }
+  .finance-aside .wrap {
+    display: block;
+  }
+  .finance-aside .text-link {
+    margin-top: 25px;
+  }
+  .finance-aside h2 {
+    font-size: 33px;
+  }
+  .summit-results dl {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 20px;
+  }
+  .summit-results dd {
+    font-size: 27px;
+  }
+  .admissions-steps li {
+    grid-template-columns: 40px 1fr;
+    gap: 20px;
+  }
+  .admissions-steps li > span {
+    font-size: 32px;
+  }
+  .admissions-window {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-actions {
+    grid-template-columns: 1fr;
+    max-width: 260px;
+    margin: auto;
+  }
+}
