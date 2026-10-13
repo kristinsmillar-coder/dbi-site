@@ -1756,3 +1756,42 @@ em {
     gap: 10px;
   }
 }
+
+.giving-actions {
+  margin-top: 28px;
+}
+.giving-button.btn.primary {
+  min-height: 56px;
+  padding: 13px 24px;
+  border: 1px solid var(--red);
+  background: var(--red);
+  box-shadow: none;
+  gap: 22px;
+}
+.giving-button.btn::after {
+  content: none;
+}
+.giving-button span {
+  font-size: 24px;
+  line-height: 1;
+}
+.giving-contact {
+  border-top: 1px solid #d8ccb2;
+  margin-top: 32px;
+  padding-top: 22px;
+}
+.editorial-copy .giving-contact p {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.giving-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.giving-contact a:hover {
+  text-decoration-thickness: 2px;
+}
