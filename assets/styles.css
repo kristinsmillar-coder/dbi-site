@@ -1692,3 +1692,67 @@ em {
   margin-top: -12px;
   gap: 12px;
 }
+
+.leadership-feature figure img {
+  aspect-ratio: 1;
+}
+.session-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.session-example {
+  border-top: 1px solid var(--gold);
+  margin-top: 32px;
+  padding-top: 28px;
+}
+.session-question {
+  font: 28px/1.25 var(--display);
+  color: var(--red);
+}
+.session-agenda {
+  background: #f5f1e8;
+  padding: 32px;
+  border-top: 4px solid var(--red);
+}
+.session-agenda summary {
+  cursor: pointer;
+  color: var(--red);
+  font-weight: 600;
+  padding: 10px 0;
+}
+.session-agenda ol {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.session-agenda li {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 15px;
+  padding: 12px 0;
+  border-top: 1px solid #d8ccb2;
+  font-size: 16px;
+}
+.session-agenda time {
+  color: var(--red);
+}
+.session-note {
+  font-size: 14px;
+  color: var(--dim);
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .session-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .session-agenda {
+    padding: 24px;
+  }
+  .session-agenda li {
+    grid-template-columns: 66px 1fr;
+    gap: 10px;
+  }
+}

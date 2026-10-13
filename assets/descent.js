@@ -16,7 +16,7 @@
   var introElapsed = 0;
   var introLastTime = null;
   var introIndex = 0;
-  var introInterval = 5000;
+  var introInterval = 2500;
 
   // The title runs on time, independently of the scroll-controlled camera.
   // Preserve its place while the tab or opening title is out of view.

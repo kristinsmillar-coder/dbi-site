@@ -53,23 +53,23 @@ function frame(time, expected) {
 }
 frame(100, "Enterprise");
 frame(90, "Enterprise"); // Previously removed Enterprise, then threw on index -1.
-frame(2590, "Enterprise");
+frame(1340, "Enterprise");
 assert.equal(bars[0].progress, 0.5);
-frame(5090, "Leadership");
-frame(10090, "Purpose");
-frame(15090, "Enterprise");
+frame(2590, "Leadership");
+frame(5090, "Purpose");
+frame(7590, "Enterprise");
 context.target = context.current = 0.2;
-frame(18090, "Enterprise");
+frame(9090, "Enterprise");
 context.target = context.current = 0;
-frame(20090, "Enterprise");
-frame(25090, "Leadership");
+frame(10090, "Enterprise");
+frame(12590, "Leadership");
 context.document.hidden = true;
 events.visibilitychange();
-frame(30090, "Leadership");
+frame(15090, "Leadership");
 context.document.hidden = false;
 events.visibilitychange();
-frame(40090, "Leadership");
-frame(45090, "Purpose");
+frame(20090, "Leadership");
+frame(22590, "Purpose");
 console.log(
   "Hero rotation passes: earlier timestamps, progress, full cycle, scroll pause and tab resume.",
 );

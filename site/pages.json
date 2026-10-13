@@ -1,22 +1,22 @@
 {
   "index": {
     "title": "Discover DBI",
-    "description": "Discover DBI\u2019s selective Flagship Program at Cathedral Catholic: business foundations, the Case Competition, and the Dons Startup Summit.",
+    "description": "Discover DBI’s selective Flagship Program at Cathedral Catholic: business foundations, the Case Competition, and the Dons Startup Summit.",
     "body_class": "home",
     "extra_head": "<link rel=\"stylesheet\" href=\"assets/descent.css\">",
     "extra_scripts": "<script src=\"assets/descent.js\"></script>"
   },
   "course": {
     "title": "The Flagship Program",
-    "description": "Explore business and entrepreneurship through real company challenges, mentors, and the DBI Startup Summit."
+    "description": "Selective after-school business sessions taught by industry professionals. See a typical Flagship session, the Case Competition, and the Startup Summit."
   },
   "finance": {
     "title": "The Finance Program",
-    "description": "DBI\u2019s smaller Finance offshoot focuses on financial literacy and investing. New-student admission is selective and opens only at the start of school in the fall."
+    "description": "DBI’s smaller Finance offshoot focuses on financial literacy and investing. New-student admission is selective and opens only at the start of school in the fall."
   },
   "usd": {
     "title": "Our USD Partnership",
-    "description": "Discover DBI's University of San Diego partnership, MBA mentorship, and college coursework opportunities."
+    "description": "DBI’s USD connections: Dean Brian Tietje on the advisory board, MBA mentorship, business coursework, and work with The Brink SBDC."
   },
   "join": {
     "title": "Admissions",
