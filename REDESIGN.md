@@ -4,7 +4,7 @@ A preview on `codex/cchs-redesign`. Do not merge or deploy it. The live GitHub P
 
 ## Reference and direction
 
-The homepage and academic overview at https://www.cathedralcatholic.org/ are the direct visual references. This rebuild follows the school's actual page compositions: large white school masthead, divided utility links, persistent framed red menu, low-centered gold hero title, large serif welcome statement with palm/dove artwork, full-height photography, editorial image-and-text sections, red admissions band, and cream footer with boxed calls to action and a pale-gold base.
+The homepage and academic overview at https://www.cathedralcatholic.org/ are the direct visual references. This rebuild follows the school's actual page compositions: large white school masthead, divided utility links, persistent framed red menu, low-centered gold hero title, large serif welcome statement with palm/dove artwork, full-height photography, editorial image-and-text sections, red admissions band, and cream footer with solid red calls to action and a pale-gold base.
 
 Inner pages follow the school's full-width photo header, breadcrumb/title overlay, red serif introduction band, and red fact panels. The palette is Cathedral red (#A81B1B), gold (#C3A65C), and warm white (#FDFBF5), using Big Caslon FB and Neue Haas Grotesk. The public school assets and font definitions are the same ones used in the approved Dons Connect build.
 
@@ -36,3 +36,9 @@ CSS and JavaScript are served directly. No Node dependencies or external build s
 ## Program details
 
 The homepage and program pages explicitly describe after-school instruction by working industry professionals. Flagship includes a sample afternoon agenda and a workshop example; calendar dates provide actual session start times. The USD page features Brian Tietje specifically as an advisory board member and includes The Brink SBDC relationship. His profile is not on the homepage. The hero title changes every 2.5 seconds; `node tests/hero-rotation.cjs` verifies timing and the blank-title startup regression.
+
+## Section and action consistency
+
+All nine pages were audited for section boundaries and responsive spacing. Major editorial blocks alternate cream and warm neutral backgrounds; the Flagship semester progression is a compact deep-red band. Thin rules separate remaining shared-color boundaries, while the homepage event introduction remains grouped with its first event. Editorial sections use 90px vertical padding on desktop and 60px on phones, with tighter supporting bands and normalized trailing margins.
+
+Primary actions share the approved giving-button geometry, solid red fill, typography, arrows and hover state. Actions on red bands use a cream inverse for contrast. Secondary actions use simple underlined text links. Desktop, tablet footer and 320px phone layouts were checked, including all nine pages for horizontal overflow and clipped buttons.

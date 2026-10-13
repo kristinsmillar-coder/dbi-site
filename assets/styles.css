@@ -14,7 +14,10 @@
   --body: "neue-haas-grotesk-display", Arial, sans-serif;
   --mono: var(--body);
   --gutter: clamp(24px, 5vw, 80px);
-  --stack: 100px;
+  --stack: 90px;
+  --section-space: 90px;
+  --section-tint: #f1ede3;
+  --section-rule: #d8ccb2;
 }
 * {
   box-sizing: border-box;
@@ -167,9 +170,9 @@ em {
   top: 34px;
   width: 80px;
   height: 80px;
-  border: 3px solid #8a261f;
-  background: #a81b1b65;
-  box-shadow: inset 0 0 0 5px #ffffff12;
+  border: 1px solid var(--red);
+  background: var(--red);
+  box-shadow: none;
   color: white;
   z-index: 60;
   padding: 22px 18px;
@@ -289,8 +292,8 @@ em {
   height: 40px;
   display: grid;
   place-items: center;
-  background: #a81b1b90;
-  border: 2px solid #8a261f;
+  background: var(--red);
+  border: 1px solid var(--red);
   font-style: normal;
 }
 /* School welcome and full-bleed photography. */
@@ -363,26 +366,7 @@ em {
   font-size: clamp(44px, 5.8vw, 80px);
   margin-bottom: 30px;
 }
-.glass-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  min-height: 62px;
-  padding: 13px 28px;
-  font-size: 20px;
-  background: #a81b1b85;
-  border: 3px solid #8a261f;
-  box-shadow: inset 0 0 0 4px #ffffff12;
-  color: white;
-}
-.glass-link span {
-  font-size: 30px;
-  font-weight: 300;
-}
-.glass-link:hover {
-  background: var(--red);
-}
+
 .school-paths {
   background: var(--cream) url("brand/white-texture.png") center/cover;
   padding: 110px 0 130px;
@@ -434,9 +418,9 @@ em {
   display: grid;
   place-items: center;
   font: 300 39px/1 var(--body);
-  border: 3px solid #8a261f;
-  background: #a81b1ba6;
-  box-shadow: inset 0 0 0 4px #ffffff14;
+  border: 1px solid var(--red);
+  background: var(--red);
+  box-shadow: none;
   color: white;
 }
 .portrait .square-arrow {
@@ -589,7 +573,8 @@ em {
   margin: 0 auto;
 }
 .section {
-  padding: 90px 0;
+  padding: var(--section-space) 0;
+  background: var(--cream);
 }
 .section .wrap {
   max-width: 1060px;
@@ -652,8 +637,8 @@ em {
 .step h3 {
   font-size: 33px;
 }
-.tint {
-  background: #f5f1e8;
+.section.tint {
+  background: var(--section-tint);
 }
 .editorial {
   display: grid;
@@ -681,51 +666,73 @@ em {
 }
 .text-link {
   display: inline-flex;
-  gap: 24px;
   align-items: center;
-  border: 3px solid #e6ddc6;
-  background: #eee9daaa;
-  color: var(--ink);
-  padding: 12px 23px;
-  font-size: 18px;
-  line-height: 1.4;
-}
-.text-link:after {
-  content: "→";
+  max-width: 100%;
   color: var(--red);
-  font-size: 25px;
+  font-size: 18px;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
 }
+
 .text-link:hover {
-  background: #e7dcc1;
+  color: var(--deep-red);
+  text-decoration-thickness: 2px;
 }
-.btn {
+.btn,
+.glass-link,
+.footer-actions a {
   display: inline-flex;
-  gap: 25px;
   align-items: center;
   justify-content: center;
-  background: #eee9da;
-  border: 3px solid #e6ddc6;
-  color: var(--ink);
-  padding: 13px 25px;
-  min-height: 59px;
-  font-size: 18px;
+  gap: 22px;
+  min-height: 56px;
+  max-width: 100%;
+  padding: 13px 24px;
+  border: 1px solid var(--red);
+  border-radius: 0;
+  background: var(--red);
+  color: white;
+  box-shadow: none;
+  font: 400 18px/1.45 var(--body);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
 .btn:after {
   content: "→";
-  font-size: 25px;
+  color: currentColor;
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.btn:hover,
+.glass-link:hover,
+.footer-actions a:hover {
+  background: var(--deep-red);
+  border-color: var(--deep-red);
+}
+.glass-link span,
+.footer-actions span,
+.giving-button span {
+  color: currentColor;
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.callout .btn,
+.admissions-feature .btn {
+  background: var(--cream);
   color: var(--red);
+  border-color: var(--cream);
 }
-.btn.primary {
-  background: #9a2b24;
-  color: white;
-  border-color: #8a261f;
-  box-shadow: inset 0 0 0 3px #ffffff12;
-}
-.btn.primary:after {
-  color: white;
-}
-.btn:hover {
-  filter: brightness(0.92);
+.callout .btn:hover,
+.admissions-feature .btn:hover {
+  background: #eee5cf;
+  border-color: #eee5cf;
 }
 .actions {
   display: flex;
@@ -875,13 +882,14 @@ em {
   aspect-ratio: 4/5;
   object-position: 35% center;
 }
-/* Cathedral's cream footer, boxed links, three contact columns and gold base. */
+/* Cathedral cream footer with shared action buttons and a gold base. */
 .site-footer {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background: var(--cream) url("brand/white-texture.png") center/cover;
   padding-top: 65px;
+  border-top: 1px solid var(--section-rule);
 }
 .footer-palm {
   position: absolute;
@@ -913,25 +921,6 @@ em {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 33px;
-}
-.footer-actions a {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  background: #eee9daaa;
-  border: 3px solid #e6ddc6;
-  padding: 13px 20px;
-  font-size: 23px;
-  line-height: 1.3;
-  min-height: 63px;
-}
-.footer-actions span {
-  color: var(--red);
-  font-size: 28px;
-}
-.footer-actions a:hover {
-  background: #e8deca;
 }
 .footer-columns {
   display: grid;
@@ -1275,8 +1264,9 @@ em {
   .inner-introduction p {
     font-size: 25px;
   }
-  .section {
-    padding: 65px 0;
+  :root {
+    --section-space: 60px;
+    --stack: 60px;
   }
   .section-title {
     text-align: left;
@@ -1360,15 +1350,6 @@ em {
   }
   .footer-actions {
     gap: 12px;
-  }
-  .footer-actions a {
-    font-size: 18px;
-    padding: 10px;
-    gap: 8px;
-    min-height: 54px;
-  }
-  .footer-actions span {
-    font-size: 24px;
   }
   .footer-columns {
     grid-template-columns: 1fr;
@@ -1524,9 +1505,9 @@ em {
   margin-top: 10px;
 }
 .finance-aside {
-  padding: 60px 0;
-  border-bottom: 1px solid #d8ccb2;
-  background: #f4f0e7;
+  padding: 55px 0;
+  border-block: 1px solid var(--section-rule);
+  background: #eee5cf;
 }
 .finance-aside .wrap {
   display: flex;
@@ -1760,20 +1741,9 @@ em {
 .giving-actions {
   margin-top: 28px;
 }
-.giving-button.btn.primary {
-  min-height: 56px;
-  padding: 13px 24px;
-  border: 1px solid var(--red);
-  background: var(--red);
-  box-shadow: none;
-  gap: 22px;
-}
+
 .giving-button.btn::after {
   content: none;
-}
-.giving-button span {
-  font-size: 24px;
-  line-height: 1;
 }
 .giving-contact {
   border-top: 1px solid #d8ccb2;
@@ -1794,4 +1764,76 @@ em {
 }
 .giving-contact a:hover {
   text-decoration-thickness: 2px;
+}
+
+/* Distinct chapters share a predictable vertical rhythm. */
+.section-heading:last-child,
+.section-title:last-child {
+  margin-bottom: 0;
+}
+.editorial-copy > :last-child,
+.section .step > :last-child {
+  margin-bottom: 0;
+}
+.section.spring-gate {
+  background: var(--deep-red);
+  color: white;
+  padding-block: 65px;
+}
+.spring-gate .eyebrow {
+  color: #ead5a5;
+}
+.section + .section {
+  border-top: 1px solid var(--section-rule);
+}
+.milestone-intro + .milestone-section {
+  border-top: 0;
+  padding-top: 50px;
+}
+.iv-note {
+  padding: 30px 0 55px;
+  border-top: 1px solid var(--section-rule);
+  background: var(--section-tint);
+}
+.iv-note p {
+  margin-bottom: 0;
+}
+.admissions .ac-letter-sect {
+  background: var(--section-tint);
+}
+.admissions .ac-year {
+  max-width: none;
+  background: var(--cream);
+  border-block: 1px solid var(--section-rule);
+}
+.admissions .ac-year > * {
+  max-width: 1060px;
+  margin-inline: auto;
+}
+.admissions .ac-year h2 {
+  max-width: 1060px;
+}
+.admissions .ac-photos figcaption {
+  color: var(--dim);
+}
+.admissions .ac-close {
+  background: var(--section-tint);
+}
+@media (max-width: 760px) {
+  .section.spring-gate {
+    padding-block: 50px;
+  }
+  .milestone-intro + .milestone-section {
+    padding-top: 35px;
+  }
+  .finance-aside {
+    padding-block: 45px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .glass-link,
+  .footer-actions a {
+    transition: none;
+  }
 }
