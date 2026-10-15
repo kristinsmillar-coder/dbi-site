@@ -1,6 +1,6 @@
 # DBI × Cathedral Catholic redesign
 
-A preview on `codex/cchs-redesign`. Do not merge or deploy it. The live GitHub Pages site remains on `main`.
+The Cathedral redesign is approved for production on October 14, 2026. GitHub Pages publishes `main` at https://cathedralcatholicdbi.org/. See `ARCHIVE.md` for the previous website and restoration instructions.
 
 ## Reference and direction
 
@@ -20,7 +20,7 @@ Admissions explains the written application, invited interview and final selecti
 2. Run `python3 tools/build-site.py` to regenerate the nine root HTML pages.
 3. Run `python3 tools/serve.py 8420` and open http://127.0.0.1:8420.
 
-CSS and JavaScript are served directly. No Node dependencies or external build service are needed. The preview server binds only to loopback and supports video Range requests. Every preview page has noindex metadata.
+CSS and JavaScript are served directly. No Node dependencies or external build service are needed. The preview server binds only to loopback and supports video Range requests. Public pages have production canonical URLs. Interview and acceptance pages remain noindex; the archived site is also noindex.
 
 ## Validation
 
