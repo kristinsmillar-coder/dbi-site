@@ -3,9 +3,12 @@
 .founder-heading .eyebrow{color:white;margin-bottom:24px}
 .founder-heading h1{font-size:clamp(72px,8vw,112px);line-height:.94;margin-bottom:28px}
 .founder-heading>p:last-child{font-size:23px;line-height:1.4;margin-bottom:0}
-.founder-hero figure{margin:0;align-self:center}
-.founder-hero img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.founder-hero figure{margin:0;align-self:center;width:100%;max-width:480px;justify-self:end}
+.founder-hero img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .founder-hero figcaption{font-size:14px;margin-top:12px;color:#fff}
+.founder-talk-photo{margin:32px 0 0}
+.founder-talk-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.founder-talk-photo figcaption{font-size:14px;color:var(--dim);margin-top:12px}
 .founder-opening>.wrap{max-width:1060px}
 .founder-opening h2{max-width:800px}
 .founder-opening .lede{max-width:870px;margin:28px 0 48px}
