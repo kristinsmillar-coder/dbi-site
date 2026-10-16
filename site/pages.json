@@ -49,5 +49,10 @@
     "title": "Our Speakers",
     "description": "Meet the industry professionals who bring real business experience to DBI’s after-school sessions, including this year’s speakers and past guests.",
     "extra_head": "<link rel=\"stylesheet\" href=\"assets/speakers.css?v=20261015-hero-crop\">"
+  },
+  "founder": {
+    "title": "Meet the Founder · Pierce Millar",
+    "description": "Meet Pierce Millar, founder of Dons Business Institute. His journey from Grassy Pedals to the TEDxCCHS stage and building DBI at Cathedral Catholic.",
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/founder.css?v=20261015\">"
   }
 }
