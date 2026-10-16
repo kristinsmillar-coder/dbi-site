@@ -1,6 +1,6 @@
 /* Speaker directory: Cathedral's type, colors and editorial spacing. */
 .speakers-hero .inner-hero-photo {
-  object-position: center 38%;
+  object-position: center top;
 }
 .speaker-section .wrap {
   max-width: 1180px;
@@ -159,4 +159,8 @@
   .speaker h3 {
     font-size: 34px;
   }
+}
+
+@media (max-width: 600px) {
+  .speakers-hero .inner-hero-photo { object-position: right center; }
 }
