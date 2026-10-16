@@ -1,6 +1,10 @@
 /* Speaker directory: Cathedral's type, colors and editorial spacing. */
+.speakers-hero { overflow: hidden; }
+@media (min-width: 601px) { .speakers-hero { height: max(600px, 41.667vw); } }
 .speakers-hero .inner-hero-photo {
   object-position: center top;
+  transform: scale(1.14);
+  transform-origin: right top;
 }
 .speaker-section .wrap {
   max-width: 1180px;
@@ -162,5 +166,5 @@
 }
 
 @media (max-width: 600px) {
-  .speakers-hero .inner-hero-photo { object-position: right center; }
+  .speakers-hero .inner-hero-photo { object-position: right center; transform: none; }
 }
