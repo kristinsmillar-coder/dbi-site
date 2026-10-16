@@ -44,5 +44,10 @@
     "body_class": "admissions",
     "extra_head": "<link rel=\"stylesheet\" href=\"assets/update-finance.css\">",
     "extra_scripts": "<script src=\"assets/update-finance.js\"></script>"
+  },
+  "speakers": {
+    "title": "Our Speakers",
+    "description": "Meet the industry professionals who bring real business experience to DBI’s after-school sessions, including this year’s speakers and past guests.",
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/speakers.css?v=20261015\">"
   }
 }

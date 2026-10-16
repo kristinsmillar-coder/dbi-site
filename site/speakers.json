@@ -1,0 +1,141 @@
+{
+  "current": [
+    {
+      "id": "brian-tietje",
+      "name": "Brian Tietje, PhD",
+      "role": "Dean · USD Knauss School of Business",
+      "bio": "Dean Tietje returns to DBI each year to share his perspective on business and leadership. He also serves on DBI’s advisory board, strengthening the program’s connection to the University of San Diego.",
+      "url": "https://www.sandiego.edu/newscenter/detail.php?post_id=96782",
+      "topic": "Returning every year",
+      "image": "assets/img/dean-tietje.jpg"
+    },
+    {
+      "id": "robert-dawson",
+      "name": "Robert Dawson",
+      "role": "CEO · RF Industries",
+      "bio": "Leads RF Industries, a communications connectivity company. His career spans business leadership, sales, marketing and technology entrepreneurship, including co-founding a technology consulting firm.",
+      "url": "https://rfindustries.com/about-us/management-team/",
+      "topic": "",
+      "image": "assets/img/speakers/robert-dawson.webp"
+    },
+    {
+      "id": "pankaj-kedia",
+      "name": "Pankaj Kedia",
+      "role": "Founder & Managing Partner · 2468 Ventures",
+      "bio": "Invests in and advises emerging AI companies after a career in technology leadership at Intel and Qualcomm. He also teaches MBA students at the University of San Diego.",
+      "url": "https://pankaj.ai/",
+      "topic": "",
+      "image": "assets/img/speakers/pankaj-kedia.webp"
+    },
+    {
+      "id": "anita-bahk",
+      "name": "Anita Bahk",
+      "role": "CRM & Lifecycle Marketing · Intuit",
+      "bio": "Works at the intersection of customer relationships and marketing at Intuit. Her experience includes leading CRM and lifecycle marketing for TurboTax, connecting customer needs with business growth.",
+      "url": "https://www.linkedin.com/in/anitabahkmba/",
+      "topic": "",
+      "image": "assets/img/speakers/anita-bahk.webp"
+    },
+    {
+      "id": "david-posnick",
+      "name": "David Posnick",
+      "role": "CEO · Preston Capital",
+      "bio": "Leads Preston Capital following senior investing roles at Blackstone and Credit Suisse. His experience brings together investment strategy, company analysis and leadership in financial services.",
+      "url": "https://www.prestoncap.com/bio/david-posnick",
+      "topic": "",
+      "image": "assets/img/speakers/david-posnick.webp"
+    },
+    {
+      "id": "kevin-lowitz",
+      "name": "Kevin Lowitz",
+      "role": "Life sciences executive",
+      "bio": "Has led business units and product initiatives at Thermo Fisher Scientific, including its microarray business. His experience connects scientific innovation with the commercial decisions that bring research tools to market.",
+      "url": "https://www.linkedin.com/in/kevinlowitz/",
+      "topic": "",
+      "image": ""
+    },
+    {
+      "id": "rupa-bernstein",
+      "name": "Rupa Bernstein",
+      "role": "People Operations · Anduril Industries",
+      "bio": "Builds the people systems and processes that help growing businesses scale. Her work spans human resources operations, workplace technology and the infrastructure behind effective teams.",
+      "url": "https://www.linkedin.com/in/rchak16/",
+      "topic": "",
+      "image": "assets/img/speakers/rupa-bernstein.webp"
+    },
+    {
+      "id": "eddie-le",
+      "name": "Eddie Le",
+      "role": "Founder & Managing Partner · Gravity Advisors",
+      "bio": "Advises technology founders on mergers, acquisitions and strategic transactions. He also owns Squarena California, the interactive light-up floor game business sponsoring this year’s DBI Case Competition.",
+      "url": "https://gravityadvisors.com/team",
+      "topic": "Squarena · Case Competition sponsor",
+      "image": "assets/img/speakers/eddie-le.webp"
+    }
+  ],
+  "past": [
+    {
+      "id": "kerry-millar",
+      "name": "Kerry Millar",
+      "role": "Principal, Strategy & Operations · Deloitte",
+      "bio": "Advises aerospace, defense and industrial businesses on growth, strategy and operating models. He joined DBI to connect strategic choices with the practical decisions that shape a business.",
+      "url": "https://www.deloitte.com/us/en/about/people/profiles.kmillar%2B2df0ed02.html",
+      "topic": "Strategy",
+      "image": "assets/img/speakers/kerry-millar.webp"
+    },
+    {
+      "id": "chris-letourneau",
+      "name": "Chris LeTourneau",
+      "role": "Operations · Genentech",
+      "bio": "Brings experience in bioprocess operations and manufacturing at Genentech. His DBI session explored operations—the work of turning a business plan into a process that delivers.",
+      "url": "https://www.linkedin.com/in/chris-letourneau-499a7b5",
+      "topic": "Operations",
+      "image": ""
+    },
+    {
+      "id": "kyle-maloy",
+      "name": "Kyle Maloy",
+      "role": "Chief of Business Development · Red Door Escape Room",
+      "bio": "Helps grow Red Door Escape Room’s in-person entertainment business. He joined Nick Madden for DBI’s finance session, bringing the perspective of a business built around memorable customer experiences.",
+      "url": "https://reddoorescape.com/team-member/kyle/",
+      "topic": "Finance",
+      "image": "assets/img/speakers/kyle-maloy.webp"
+    },
+    {
+      "id": "nick-madden",
+      "name": "Nick Madden",
+      "role": "CEO · Red Door Escape Room",
+      "bio": "Leads the team behind Red Door Escape Room. Alongside Kyle Maloy, he joined DBI’s finance session to bring a company leader’s perspective to the numbers behind a growing business.",
+      "url": "https://reddoorescape.com/team-member/nick/",
+      "topic": "Finance",
+      "image": "assets/img/speakers/nick-madden.webp"
+    },
+    {
+      "id": "carly-wheeler",
+      "name": "Carly Wheeler",
+      "role": "Human Resources · Intuit",
+      "bio": "An experienced HR business partner whose career includes Intuit, Kantar and MTV Networks. She brought the people side of business to DBI, introducing students to human resources.",
+      "url": "https://www.linkedin.com/in/carlywheeler",
+      "topic": "Human resources",
+      "image": "assets/img/speakers/carly-wheeler.webp"
+    },
+    {
+      "id": "krista-moffett",
+      "name": "Krista Moffett",
+      "role": "Marketing · Soapy Joe’s",
+      "bio": "Works on brand and customer marketing at Soapy Joe’s, with experience in community campaigns, events and customer loyalty. She joined DBI to share a practitioner’s perspective on marketing.",
+      "url": "https://www.linkedin.com/in/krista-moffett-59aa75a6",
+      "topic": "Marketing",
+      "image": ""
+    },
+    {
+      "id": "ross-garrett",
+      "name": "Ross Garrett",
+      "role": "CEO · Surfline",
+      "bio": "Leads Surfline, connecting surfers with forecasts, cameras and surf information. His career spans consumer brands, media and entrepreneurship, bringing a broad operating perspective to DBI.",
+      "url": "https://www.rossgarrett.com/about",
+      "topic": "",
+      "image": "assets/img/speakers/ross-garrett.webp"
+    }
+  ]
+}
