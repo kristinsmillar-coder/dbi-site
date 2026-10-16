@@ -59,7 +59,8 @@ Researched 2026-10-15. Attendance, academic-year grouping, annual visits by Bria
 
 ### Krista Moffett
 - Biography/profile: https://www.linkedin.com/in/krista-moffett-59aa75a6
-- Portrait: No confidently verified headshot found; intentional initials displayed.
+- Portrait: Expanded LinkedIn profile headshot, downloaded 2026-10-15.
+- Past-speaker card retains her Soapy Joe’s affiliation for that session; biography uses past tense because her current profile lists fractional marketing work.
 
 ### Ross Garrett
 - Biography/profile: https://www.rossgarrett.com/about
