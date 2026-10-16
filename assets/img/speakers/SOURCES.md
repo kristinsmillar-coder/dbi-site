@@ -26,7 +26,8 @@ Researched 2026-10-15. Attendance, academic-year grouping, annual visits by Bria
 
 ### Kevin Lowitz
 - Biography/profile: https://www.linkedin.com/in/kevinlowitz/
-- Portrait: No confidently verified headshot found; intentional initials displayed.
+- Portrait: Expanded LinkedIn profile image, 800 × 800, downloaded 2026-10-15.
+- Current role verified directly on his LinkedIn profile: Vice President, Global Service, Advanced Diagnostics, Waters Corporation (February 2026–present).
 
 ### Rupa Bernstein
 - Biography/profile: https://www.linkedin.com/in/rchak16/
@@ -71,7 +72,7 @@ Researched 2026-10-15. Attendance, academic-year grouping, annual visits by Bria
 - Rupa Bernstein: https://theorg.com/org/anduril-industries/person/rupa-bernstein (portrait).
 - Robert Dawson: https://theorg.com/org/rf-industries/person/robert-dawson (higher-resolution version of the company portrait).
 - Chris LeTourneau: https://theorg.com/org/genentech/person/chris-letourneau (bioprocess history).
-- Kevin Lowitz: https://www.businesswire.com/news/home/20240530659960/en/Thermo-Fisher-Scientific-Updates-Chromosomal-Microarray-Analysis-Solutions-to-Comply-with-IVDR-Regulation (company release identifies 2024 VP/GM role). Past-tense biography avoids asserting an unverified current employer.
+- Kevin Lowitz: https://www.businesswire.com/news/home/20240530659960/en/Thermo-Fisher-Scientific-Updates-Chromosomal-Microarray-Analysis-Solutions-to-Comply-with-IVDR-Regulation (company release identifies 2024 VP/GM role). Current Waters role subsequently verified directly on LinkedIn on 2026-10-15.
 - Krista Moffett: https://stevieawards.com/aba/soapy-joes-car-wash-santee-california-krista-moffett-marketing-manager (company award submission).
 - Nick Madden: https://www.linkedin.com/posts/sententrepreneurs_were-proud-to-feature-our-very-own-nicholas-activity-7366470055603142657-i0Lk (SENT confirms CEO; Red Door site uses the informal title Chief Execution Officer).
 - Squarena California: https://www.squarenaca.com/faq (light-up floor game concept). Owner confirms Eddie Le owns it and it sponsors the 2026–27 Case Competition.
