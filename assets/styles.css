@@ -1,7 +1,7 @@
 /* Cathedral Catholic reference system, rebuilt for DBI. */
 :root {
   --red: #a81b1b;
-  --deep-red: #822019;
+  --deep-red: #901111;
   --gold: #c3a65c;
   --gold-ink: #856b30;
   --cream: #fdfbf5;
@@ -605,7 +605,7 @@ em {
   padding-top: 70px;
 }
 .fact-strip p {
-  background: #9a2b24;
+  background: var(--red);
   min-height: 240px;
   display: flex;
   flex-direction: column;
@@ -801,7 +801,7 @@ em {
 .callout {
   padding: 80px 30px;
   text-align: center;
-  background: #9a2b24;
+  background: var(--red);
   color: white;
 }
 .callout p {
