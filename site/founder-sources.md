@@ -17,3 +17,5 @@ Public copy intentionally excludes private application, financial, academic, and
 - Current full-width hero: first photo in Pierce’s Startup Summit LinkedIn post, selected explicitly by Pierce on October 16, 2026. https://www.linkedin.com/feed/update/urn:li:activity:7466701219747581952/ (1280 x 960, assets/img/pierce-startup-summit.jpg).
 
 - October 16, 2026: hero updated to AI-enhanced 3840-pixel-wide export; original retained. Added labeled AI recreation of Grassy Pedals with long artificial-lawn blades per Pierce. Generation prompts and resolution details: site/founder-image-generation.md.
+
+- Final direction October 16, 2026: restored red hero with Pierce’s LinkedIn portrait (assets/img/pierce-linkedin.jpg). AI-enhanced stage exports are retained as unused assets; Grassy Pedals recreation remains in its story section.
