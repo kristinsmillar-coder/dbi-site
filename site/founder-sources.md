@@ -19,3 +19,5 @@ Public copy intentionally excludes private application, financial, academic, and
 - October 16, 2026: hero updated to AI-enhanced 3840-pixel-wide export; original retained. Added labeled AI recreation of Grassy Pedals with long artificial-lawn blades per Pierce. Generation prompts and resolution details: site/founder-image-generation.md.
 
 - Final direction October 16, 2026: restored red hero with Pierce’s LinkedIn portrait (assets/img/pierce-linkedin.jpg). AI-enhanced stage exports are retained as unused assets; Grassy Pedals recreation remains in its story section.
+
+- October 16, 2026: replaced the final DBI sign photo with the unmodified original Startup Summit stage photo (assets/img/pierce-startup-summit.jpg), explicitly requested by Pierce.
