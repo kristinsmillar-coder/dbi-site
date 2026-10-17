@@ -6,6 +6,9 @@
 .founder-heading .eyebrow{color:white;margin-bottom:20px}
 .founder-heading h1{font-size:clamp(86px,8vw,112px);line-height:.94;margin-bottom:24px}
 .founder-heading>p:last-child{font-size:23px;line-height:1.4;margin-bottom:0}
+.founder-product-photo{margin:32px 0 0}
+.founder-product-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3}
+.founder-product-photo figcaption{font-size:14px;color:var(--dim);margin-top:12px}
 .founder-talk-photo{margin:32px 0 0}
 .founder-talk-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .founder-talk-photo figcaption{font-size:14px;color:var(--dim);margin-top:12px}
