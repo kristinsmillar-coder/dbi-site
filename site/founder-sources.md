@@ -12,4 +12,6 @@ Reviewed October 15, 2026.
 
 Public copy intentionally excludes private application, financial, academic, and unrelated business material. No quotations attributed to Pierce were invented.
 
-- Hero portrait updated October 16, 2026: current 800 x 800 LinkedIn profile photo, https://www.linkedin.com/in/pierce-millar-7090bb274/ (assets/img/pierce-linkedin.jpg).
+- Previous portrait, October 16, 2026: current 800 x 800 LinkedIn profile photo, https://www.linkedin.com/in/pierce-millar-7090bb274/ (assets/img/pierce-linkedin.jpg).
+
+- Current full-width hero: first photo in Pierce’s Startup Summit LinkedIn post, selected explicitly by Pierce on October 16, 2026. https://www.linkedin.com/feed/update/urn:li:activity:7466701219747581952/ (1280 x 960, assets/img/pierce-startup-summit.jpg).
