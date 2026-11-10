@@ -35,3 +35,13 @@
 #family-result ul {padding-left:1.3rem;margin:1rem 0}
 #family-result h3 {font-size:clamp(32px,3.6vw,48px)}
 #family-rsvp [hidden],#family-result[hidden],#family-result [hidden],#family-rsvp[hidden]{display:none!important}
+#ticket-manager{scroll-margin-top:85px}
+.ticket-invite [hidden]{display:none!important}
+#manage-list {border:0;margin:1.2rem 0;padding:0}
+#manage-list legend {font-weight:bold;padding:0 0 .5rem}
+#manage-list label {display:flex;align-items:baseline;gap:.7rem;border-top:1px solid var(--section-rule);padding:.9rem 0}
+#manage-list input {accent-color:var(--red);width:1rem;height:1rem;flex:none}
+#manage-controls {margin:1rem 0 2rem}
+#confirm-panel {border-left:3px solid var(--red);padding:.8rem 1rem;background:var(--cream,#f6f1e6)}
+#confirm-panel h3{font-size:1.6rem}
+#confirm-panel button {margin:.35rem .75rem .35rem 0}

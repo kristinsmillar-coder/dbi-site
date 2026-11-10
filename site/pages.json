@@ -58,7 +58,7 @@
   "rsvp": {
     "title": "RSVP · The Case Competition",
     "description": "Reserve your free ticket for the Squarena-sponsored DBI Case Competition, December 2, 2026, 5:00–8:30 PM at Cathedral Catholic. Doors open at 4:30 and close at 5:00.",
-    "extra_head": "<link rel=\"stylesheet\" href=\"assets/rsvp.css?v=family1\">",
-    "extra_scripts": "<script src=\"assets/family-tickets.js?v=1\" defer></script>"
+    "extra_head": "<link rel=\"stylesheet\" href=\"assets/rsvp.css?v=family2\">",
+    "extra_scripts": "<script src=\"assets/family-tickets.js?v=2\" defer></script>"
   }
 }

@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="assets/cchs-fonts.css" />
     <link rel="stylesheet" href="assets/styles.css?v=20261015-cchs-red" />
-    <link rel="stylesheet" href="assets/rsvp.css?v=family1">
+    <link rel="stylesheet" href="assets/rsvp.css?v=family2">
     <script src="assets/site.js" defer></script>
   </head>
   <body id="top" class="inner">
@@ -111,6 +111,23 @@
       <p class="eyebrow">Free admission · Wednesday, December 2</p>
       <h2 id="ticket-title">Join us for case night.</h2>
       <p class="lede">Take a seat as DBI’s Flagship teams present their recommendations to Squarena and a panel of judges.</p>
+      <section id="ticket-manager" hidden aria-labelledby="manager-heading">
+        <p class="eyebrow">Guest services</p><h2 id="manager-heading">Manage your reservation.</h2>
+        <p id="manage-note" role="status">Loading your guest list…</p>
+        <div id="manage-controls" hidden>
+          <p id="manage-code"></p>
+          <p>Select the guests who can no longer attend. Everyone else keeps their ticket.</p>
+          <button class="guest-add" id="choose-all" type="button">Select all remaining guests</button>
+          <fieldset id="manage-list"><legend>Guests on this reservation</legend></fieldset>
+          <button class="btn" type="button" id="review-cancel" disabled>Review cancellation</button>
+          <section id="confirm-panel" hidden aria-labelledby="confirm-heading">
+            <h3 id="confirm-heading">Confirm cancellation</h3><p id="cancel-summary"></p>
+            <button type="button" id="confirm-cancel" class="btn">Confirm cancellation</button>
+            <button type="button" id="keep-guests" class="guest-add">Go back</button>
+          </section>
+        </div>
+        <a class="text-link" href="rsvp.html">Back to event registration</a>
+      </section>
       <form id="family-rsvp" hidden>
         <fieldset class="rsvp-attendance"><legend>Will you be there?</legend>
           <label><input type="radio" name="attending" value="yes" checked> I’ll attend</label>
@@ -128,6 +145,7 @@
       <section id="family-result" hidden tabindex="-1" aria-labelledby="result-title">
         <p class="eyebrow">December 2 · Case Competition</p><h3 id="result-title"></h3>
         <p id="result-message"></p><p id="result-ref"></p><ul id="result-names"></ul>
+        <a id="manage-result" class="btn" hidden>Manage reservation</a>
         <button id="mail-retry" type="button" class="guest-add" hidden>Retry ticket email</button>
         <p id="mail-status" role="status"></p>
       </section>
@@ -218,6 +236,6 @@
         <p>© 2026 Dons Business Institute</p>
       </div>
     </footer>
-    <script src="assets/family-tickets.js?v=1" defer></script>
+    <script src="assets/family-tickets.js?v=2" defer></script>
   </body>
 </html>
