@@ -69,9 +69,10 @@ BEGIN:VEVENT
 UID:dbi-flagship-2026-6@cathedralcatholicdbi.org
 DTSTAMP:20260831T120000Z
 DTSTART;TZID=America/Los_Angeles:20261202T144500
-DTEND;TZID=America/Los_Angeles:20261202T200000
+DTEND;TZID=America/Los_Angeles:20261202T203000
 SUMMARY:DBI Flagship - Case Competition
 LOCATION:Cathedral Catholic High School
-DESCRIPTION:Dons Business Institute Flagship Program. Questions: dbi@cathedralcatholic.org
+DESCRIPTION:Teams arrive at 2:45 PM. Guest doors open at 4:30 PM and close
+  at 5:00 PM. Public program 5:00-8:30 PM.
 END:VEVENT
 END:VCALENDAR

@@ -23,10 +23,13 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:dbi-case-competition-2026-guests@cathedralcatholicdbi.org
 DTSTAMP:20261110T120000Z
-DTSTART;TZID=America/Los_Angeles:20261202T163000
-DTEND;TZID=America/Los_Angeles:20261202T200000
+DTSTART;TZID=America/Los_Angeles:20261202T170000
+DTEND;TZID=America/Los_Angeles:20261202T203000
 SUMMARY:The DBI Case Competition
 LOCATION:Guadalupe Center Theater\, Cathedral Catholic High School\, 5555 Del Mar Heights Rd\, San Diego\, CA 92130
-DESCRIPTION:Doors open at 4:30 PM. Event runs 4:30-8:00 PM\, with food served to close the evening. Questions: dbi@cathedralcatholic.org
+DESCRIPTION:Sponsored by Squarena. Doors open at 4:30 PM and close at 5.\n
+ Teams present in random order with a 10-minute break after team five.\n
+ Food follows the presentations.
+URL:https://cathedralcatholicdbi.org/rsvp.html
 END:VEVENT
 END:VCALENDAR
