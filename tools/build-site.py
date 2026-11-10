@@ -8,7 +8,7 @@ speakers = runpy.run_path(str(ROOT / 'tools/render-speakers.py'))['render_speake
 layout = (ROOT / 'site/templates/base.html').read_text()
 for slug, page in json.loads((ROOT / 'site/pages.json').read_text()).items():
     values = {'extra_head': '', 'extra_scripts': '', 'body_class': 'inner', **page}
-    values['robots'] = 'noindex, nofollow' if slug in {'interviews', 'update', 'update-finance'} else 'index, follow'
+    values['robots'] = 'noindex, nofollow' if slug in {'interviews', 'update', 'update-finance', 'rsvp'} else 'index, follow'
     values['canonical'] = 'https://cathedralcatholicdbi.org/' + ('' if slug == 'index' else slug + '.html')
     values['content'] = (ROOT / 'site/pages' / f'{slug}.html').read_text()
     if slug == 'speakers':

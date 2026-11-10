@@ -1,0 +1,217 @@
+<section class="inner-hero">
+  <img
+    class="inner-hero-photo"
+    src="assets/img/case-stage.jpg"
+    alt="A student team presenting on the Case Competition stage"
+    fetchpriority="high"
+  />
+  <div class="inner-hero-title">
+    <p><a href="index.html">HOME</a><span>|</span>YOU’RE INVITED</p>
+    <h1>The Case Competition</h1>
+  </div>
+</section>
+<section class="inner-introduction">
+  <p>
+    Join us as DBI’s Flagship teams take the stage to advise a real company on
+    a decision it actually needs to make.
+  </p>
+</section>
+
+<section class="section rsvp" id="rsvp">
+  <div class="wrap rsvp-grid">
+    <aside class="rsvp-event" aria-labelledby="rsvp-event-title">
+      <p class="rsvp-kicker">Dons Business Institute · Fall 2026</p>
+      <h2 id="rsvp-event-title">
+        <time datetime="2026-12-02">Wednesday,<br />December 2</time>
+      </h2>
+      <dl class="rsvp-facts">
+        <div>
+          <dt>Doors open</dt>
+          <dd><time datetime="2026-12-02T16:30">4:30 PM</time></dd>
+        </div>
+        <div>
+          <dt>Event</dt>
+          <dd>
+            <time datetime="2026-12-02T16:30">4:30</time>–<time
+              datetime="2026-12-02T20:00"
+              >8:00 PM</time
+            >
+          </dd>
+        </div>
+        <div>
+          <dt>Dinner</dt>
+          <dd>Food is served to close the evening</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>
+            Cathedral Catholic High School<br /><span
+              >5555 Del Mar Heights Rd, San Diego, CA 92130</span
+            >
+          </dd>
+        </div>
+      </dl>
+      <a class="rsvp-cal" href="assets/dbi-case-competition-2026.ics" download
+        >Add to calendar</a
+      >
+    </aside>
+
+    <div class="rsvp-panel">
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <p class="eyebrow">RSVP</p>
+        <h2 class="rsvp-heading">Will you join us?</h2>
+        <p class="rsvp-sub">
+          Let us know whether you can make it so we can plan seating and food.
+          It takes less than a minute.
+        </p>
+
+        <fieldset class="rsvp-choice">
+          <legend>Your response</legend>
+          <label
+            ><input type="radio" name="attending" value="yes" checked /><span
+              ><strong>Joyfully accepts</strong><small>I’ll be there</small></span
+            ></label
+          >
+          <label
+            ><input type="radio" name="attending" value="no" /><span
+              ><strong>Regretfully declines</strong
+              ><small>I can’t make it</small></span
+            ></label
+          >
+        </fieldset>
+
+        <div class="rsvp-row">
+          <label class="rsvp-field"
+            ><span>First name</span
+            ><input
+              type="text"
+              name="firstName"
+              autocomplete="given-name"
+              required
+              maxlength="60"
+          /></label>
+          <label class="rsvp-field"
+            ><span>Last name</span
+            ><input
+              type="text"
+              name="lastName"
+              autocomplete="family-name"
+              required
+              maxlength="60"
+          /></label>
+        </div>
+        <label class="rsvp-field"
+          ><span>Email</span
+          ><input
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+            maxlength="120"
+            aria-describedby="rsvp-email-note"
+        /></label>
+        <p class="rsvp-hint" id="rsvp-email-note">
+          Your confirmation will be sent here.
+        </p>
+
+        <div class="rsvp-if-yes">
+          <label class="rsvp-field"
+            ><span>Total in your party, including you</span
+            ><select name="partySize">
+              <option value="1">1 — just me</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select></label
+          >
+          <label class="rsvp-field"
+            ><span>Dietary needs or allergies <em>Optional</em></span
+            ><textarea
+              name="dietary"
+              rows="3"
+              maxlength="400"
+              placeholder="e.g. vegetarian, nut allergy"
+            ></textarea>
+          </label>
+        </div>
+
+        <label class="rsvp-trap" aria-hidden="true"
+          >Leave this blank<input
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+        /></label>
+
+        <p class="rsvp-error" id="rsvp-error" role="alert" hidden></p>
+        <button class="btn rsvp-submit" type="submit" id="rsvp-submit">
+          Send my RSVP
+        </button>
+        <p class="rsvp-hint">
+          Need to change your response? Submit again with the same email and
+          we’ll update it.
+        </p>
+      </form>
+
+      <div class="rsvp-done" id="rsvp-done" tabindex="-1" hidden>
+        <p class="eyebrow">RSVP received</p>
+        <h2 id="rsvp-done-title">You’re on the list.</h2>
+        <p class="lede" id="rsvp-done-body"></p>
+        <p id="rsvp-done-mail"></p>
+        <div class="rsvp-done-actions">
+          <a
+            class="btn"
+            id="rsvp-done-cal"
+            href="assets/dbi-case-competition-2026.ics"
+            download
+            >Add to calendar</a
+          >
+          <button class="text-link rsvp-again" type="button" id="rsvp-again">
+            Edit my response
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap editorial">
+    <figure>
+      <img
+        src="assets/img/case-team-original.jpg"
+        alt="A student team presenting its recommendation during the Case Competition"
+        width="2048"
+        height="1536"
+        loading="lazy"
+      />
+      <figcaption>
+        The 2025 Surfline case: students defend a recommendation on stage.
+      </figcaption>
+    </figure>
+    <div class="editorial-copy">
+      <p class="eyebrow">What you’ll see</p>
+      <h2>A real company. A real decision.</h2>
+      <p>
+        Teams apply what they have learned in finance, strategy, operations,
+        marketing, and communication to a real business problem. They research
+        the market, weigh the alternatives, build a financial case, and defend a
+        recommendation to company leadership and judges.
+      </p>
+      <a class="text-link" href="course.html#case-competition"
+        >More about the Case Competition</a
+      >
+    </div>
+  </div>
+</section>
+
+<section class="iv-note rsvp-note">
+  <div class="wrap">
+    <p class="fine">
+      Questions about the evening? Email
+      <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.
+    </p>
+  </div>
+</section>
