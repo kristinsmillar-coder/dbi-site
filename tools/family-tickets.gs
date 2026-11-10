@@ -2,7 +2,7 @@
  * Bound to DBI's private December 2 roster. Public callers may submit an RSVP
  * but cannot list or look up guests. All callable editor helpers end in "_".
  */
-const TYPES = ['Adult guest','Student','Cathedral Catholic faculty'];
+const TYPES = ['Adult guest','Student','Cathedral Catholic faculty','Alumni','Community member'];
 const END = Date.parse('2026-12-03T01:00:00Z'); // doors close 5 PM Pacific
 const MAIL = 'dbi@cathedralcatholic.org';
 const reply_ = obj => ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
