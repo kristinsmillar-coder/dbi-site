@@ -1,3 +1,4 @@
+/** @OnlyCurrentDoc */
 /**
  * DBI Case Competition RSVPs (December 2, 2026) — backend.
  *
