@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="assets/cchs-fonts.css" />
     <link rel="stylesheet" href="assets/styles.css?v=20261015-cchs-red" />
-    <link rel="stylesheet" href="assets/rsvp.css">
+    <link rel="stylesheet" href="assets/rsvp.css?v=family1">
     <script src="assets/site.js" defer></script>
   </head>
   <body id="top" class="inner">
@@ -111,8 +111,32 @@
       <p class="eyebrow">Free admission · Wednesday, December 2</p>
       <h2 id="ticket-title">Join us for case night.</h2>
       <p class="lede">Take a seat as DBI’s Flagship teams present their recommendations to Squarena and a panel of judges.</p>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeLzt_OPGvU80fCaFy48pUXwJWQ5HFC_2sQuFpWqNy5BPePzw/viewform">RSVP for December 2</a>
-      <p class="ticket-note">One response per guest. Tell us if you’re attending or unable to come. If you’re attending, keep your email confirmation as your ticket.</p>
+      <form id="family-rsvp" hidden>
+        <fieldset class="rsvp-attendance"><legend>Will you be there?</legend>
+          <label><input type="radio" name="attending" value="yes" checked> I’ll attend</label>
+          <label><input type="radio" name="attending" value="no"> I can’t make it</label>
+        </fieldset>
+        <label class="family-field">Contact email<input name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="email-help"></label>
+        <p class="family-hint" id="email-help">We’ll send all your tickets in one email.</p>
+        <div id="family-guests"></div>
+        <button type="button" id="add-guest" class="guest-add">+ Add another guest</button>
+        <div class="family-total" aria-live="polite"><span id="family-count"></span><strong>Free</strong></div>
+        <input class="ticket-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave empty">
+        <p id="family-error" class="family-error" role="alert" hidden></p>
+        <button class="btn" type="submit" id="family-submit">Reserve free tickets</button>
+      </form>
+      <section id="family-result" hidden tabindex="-1" aria-labelledby="result-title">
+        <p class="eyebrow">December 2 · Case Competition</p><h3 id="result-title"></h3>
+        <p id="result-message"></p><p id="result-ref"></p><ul id="result-names"></ul>
+        <button id="mail-retry" type="button" class="guest-add" hidden>Retry ticket email</button>
+        <p id="mail-status" role="status"></p>
+      </section>
+      <template id="guest-fields"><fieldset class="guest-card">
+        <legend></legend><button class="remove-guest" type="button" hidden>Remove</button>
+        <label class="family-field">Full name<input name="guestName" type="text" required maxlength="80"></label>
+        <label class="family-field">Guest type<select name="guestType" required><option value="" selected disabled>Select guest type</option><option>Adult guest</option><option>Student</option><option>Cathedral Catholic faculty</option></select></label>
+      </fieldset></template>
+      <noscript><p>Please enable JavaScript to register here, or contact <a href="mailto:dbi@cathedralcatholic.org">dbi@cathedralcatholic.org</a>.</p></noscript>
     </div>
     <aside class="ticket-details" aria-labelledby="evening-title">
       <p class="eyebrow">Plan your visit</p>
@@ -194,6 +218,6 @@
         <p>© 2026 Dons Business Institute</p>
       </div>
     </footer>
-
+    <script src="assets/family-tickets.js?v=1" defer></script>
   </body>
 </html>

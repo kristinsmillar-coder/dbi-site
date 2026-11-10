@@ -14,3 +14,24 @@
 .ticket-giving { display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(30px,7vw,105px); }
 .ticket-giving p:not(.eyebrow) { margin-bottom:1rem; }
 @media(max-width:760px){ .ticket-grid,.ticket-giving{grid-template-columns:1fr;gap:36px}.ticket-giving{gap:0}.ticket-section{padding-top:44px}.ticket-hero .inner-hero-title p:first-child{font-size:13px}.ticket-details dl div{grid-template-columns:4.5rem 1fr} }
+#family-rsvp {margin-top:2rem}
+#family-rsvp fieldset {min-width:0}
+.rsvp-attendance {border:0;padding:0;margin:0 0 1.4rem}
+.rsvp-attendance legend,.family-field,.guest-card legend {font-weight:600}
+.rsvp-attendance label {display:inline-flex;align-items:center;gap:.4rem;margin:.5rem 1rem 0 0;cursor:pointer}
+.rsvp-attendance input {accent-color:var(--red);width:1.1rem;height:1.1rem}
+.family-field {display:grid;gap:.35rem;margin:0 0 .8rem}
+.family-field input,.family-field select {width:100%;min-width:0;color:var(--ink);padding:.7rem;font:inherit;font-weight:400;background:white;border:1px solid #817971;border-radius:0}
+.family-hint {color:var(--dim);font-size:1rem;margin:-.3rem 0 1.5rem}
+.guest-card {border:1px solid var(--section-rule);padding:1rem 1.15rem .35rem;margin:1.2rem 0 .7rem;position:relative}
+.guest-card legend {padding:0 .5rem;color:var(--red)}
+.remove-guest,.guest-add {font:inherit;color:var(--red);cursor:pointer;background:transparent;border:0;text-decoration:underline;text-underline-offset:4px}
+.remove-guest {display:block;margin-left:auto;margin-bottom:.3rem;font-size:.95rem}
+.guest-add {padding:.5rem 0}
+.family-total {display:flex;justify-content:space-between;padding:1rem 0;margin:.9rem 0;border-top:1px solid var(--section-rule)}
+.ticket-trap {position:absolute;left:-9999px;width:1px;height:1px}
+.family-error {color:var(--red)}
+#family-result {border-top:3px solid var(--red);padding:1.4rem 0;margin-top:2rem}
+#family-result ul {padding-left:1.3rem;margin:1rem 0}
+#family-result h3 {font-size:clamp(32px,3.6vw,48px)}
+#family-rsvp [hidden],#family-result[hidden],#family-result [hidden],#family-rsvp[hidden]{display:none!important}
