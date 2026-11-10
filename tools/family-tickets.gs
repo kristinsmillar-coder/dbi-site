@@ -91,15 +91,50 @@ function rosterRow_(b,id,i){
  return [status==='Checked in',safe(g.name),g.type,status,b.code,safe(b.email),f((b.checked||{})[i]),f((b.canceled||{})[i]),f(b.time),id+':'+i];
 }
 function onOpen(){SpreadsheetApp.getUi().createMenu('DBI tickets').addItem('Refresh guest list','refreshRoster_').addToUi();refreshRoster_();}
+// Runs from the spreadsheet or its minute timer, with this-file-only access.
+function canceledGuestIds_(props){
+ const canceled=new Set();
+ for(const [key,value] of Object.entries(props)){
+  if(!key.startsWith('booking:'))continue;
+  const b=JSON.parse(value);
+  for(const i of Object.keys(b.canceled||{}))if(b.canceled[i])canceled.add(key.slice(8)+':'+i);
+ }
+ return canceled;
+}
+function pruneCanceledRows_(sh,canceled){
+ const n=sh.getLastRow()-1;
+ if(!canceled.size||n<1)return;
+ const ids=sh.getRange(2,10,n,1).getValues().flat();
+ for(let i=n-1;i>=0;){
+  if(!canceled.has(String(ids[i]))){i--;continue;}
+  const last=i;while(i>=0 && canceled.has(String(ids[i])))i--;
+  sh.deleteRows(i+3,last-i);
+ }
+}
+function syncCanceledGuests(){
+ // Ticket cancellation closes at the start of the event.
+ if(Date.now()>END+86400000)return;
+ const lock=LockService.getScriptLock();if(!lock.tryLock(10000))return;
+ try{
+  const store=PropertiesService.getScriptProperties(),props=store.getProperties();
+  const ids=canceledGuestIds_(props);
+  if(!ids.size)return;
+  const signature=Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,[...ids].sort().join('|')));
+  if(signature===props['roster:removed'])return;
+  const sh=SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Guest list');
+  if(sh){pruneCanceledRows_(sh,ids);SpreadsheetApp.flush();store.setProperty('roster:removed',signature);}
+ }finally{lock.releaseLock();}
+}
 function refreshRoster_(){
  const lock=LockService.getScriptLock();lock.waitLock(15000);
  try {
   const ss=SpreadsheetApp.getActive(), sh=ss.getSheetByName('Guest list')||ss.insertSheet('Guest list');
   const props=PropertiesService.getScriptProperties().getProperties(), rows=[],byId={};
   Object.keys(props).filter(k=>k.startsWith('booking:')).map(k=>[k.slice(8),JSON.parse(props[k])]).sort((a,b)=>a[1].time-b[1].time).forEach(([id,b])=>{
-    b.guests.forEach((g,i)=>{const row=rosterRow_(b,id,i);byId[row[9]]=row;});
+    b.guests.forEach((g,i)=>{if(status_(b,i)==='Canceled')return;const row=rosterRow_(b,id,i);byId[row[9]]=row;});
   });
   // Keep existing guest rows stable, including after staff sort the sheet.
+  pruneCanceledRows_(sh,canceledGuestIds_(props));
   const prev=sh.getLastRow();
   if(prev>1)sh.getRange(2,10,prev-1,1).getValues().flat().forEach(k=>{if(byId[k]){rows.push(byId[k]);delete byId[k];}});
   rows.push(...Object.values(byId));
@@ -114,12 +149,13 @@ function onEdit(e){
  const lock=LockService.getScriptLock();lock.waitLock(15000);
  try{
   const sh=r.getSheet(),store=PropertiesService.getScriptProperties();
-  for(let n=0;n<r.getNumRows();n++){
+  for(let n=r.getNumRows()-1;n>=0;n--){
    const row=r.getRow()+n, match=/^([a-f\d-]{36}):(\d+)$/i.exec(String(sh.getRange(row,10).getValue()));
    if(!match)continue;
    const key='booking:'+match[1],i=Number(match[2]),b=JSON.parse(store.getProperty(key)||'null');
    if(!b||!b.guests[i])continue;
    const status=status_(b,i),checked=sh.getRange(row,1).isChecked();
+   if(status==='Canceled'){sh.deleteRows(row,1);continue;}
    if(status==='Attending'||status==='Checked in'){
      b.checked=b.checked||{};if(checked)b.checked[i]=b.checked[i]||Date.now();else delete b.checked[i];
      store.setProperty(key,JSON.stringify(b));

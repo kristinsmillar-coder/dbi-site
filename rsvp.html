@@ -15,9 +15,9 @@
     />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="assets/cchs-fonts.css" />
-    <link rel="stylesheet" href="assets/styles.css?v=20261015-cchs-red" />
+    <link rel="stylesheet" href="assets/styles.css?v=flagship-menu1" />
     <link rel="stylesheet" href="assets/rsvp.css?v=family2">
-    <script src="assets/site.js" defer></script>
+    <script src="assets/site.js?v=flagship-menu1" defer></script>
   </head>
   <body id="top" class="inner">
     <a class="skip" href="#main-content">Skip to content</a>
@@ -58,10 +58,15 @@
       <div class="menu-layout">
         <nav aria-label="Main navigation">
           <a href="index.html">Home <span>→</span></a
-          ><a href="course.html">Flagship Program <span>→</span></a
-          ><a href="finance.html" class="nav-subprogram"
-            ><span aria-hidden="true">↳</span> Finance Program</a
-          ><a href="rsvp.html">Case Competition RSVP <span aria-hidden="true">→</span></a
+          >
+          <div class="program-group">
+            <div class="program-line">
+              <a class="program-link" href="course.html">Flagship Program</a>
+              <button class="program-toggle" aria-expanded="false" aria-controls="finance-child" aria-label="Show Finance Program"><span aria-hidden="true">⌄</span></button>
+            </div>
+            <a id="finance-child" class="nav-subprogram" href="finance.html" hidden><span aria-hidden="true">↳</span> Finance Program</a>
+          </div>
+          <a href="rsvp.html">Case Competition RSVP <span aria-hidden="true">→</span></a
           ><a href="speakers.html">Our Speakers <span>→</span></a
           ><a href="founder.html">Meet the Founder <span>→</span></a
           ><a href="usd.html">USD Partnership <span>→</span></a

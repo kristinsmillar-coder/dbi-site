@@ -17,6 +17,14 @@ test('partial and full cancellations retain the audit trail and retries do not r
  assert.equal(manage('cancel',[0]).guests.every(g=>g.status==='Canceled'),true);
 });
 test('staff check-in prevents cancellation; canceled guests cannot check in',()=>{
- const {ctx,manage,request}=setup();let rowIndex=0,checked=true,written;const sheet={getName:()=> 'Guest list',getRange:(_,c)=>({getValue:()=>request.id+':'+rowIndex,isChecked:()=>checked,setValues:rows=>written=rows[0]})};const edit=()=>ctx.onEdit({range:{getSheet:()=>sheet,getColumn:()=>1,getRow:()=>2,getNumRows:()=>1},source:{toast(){}}});
- edit();assert.equal(written[3],'Checked in');assert.equal(manage('cancel',[0]).ok,false);checked=false;edit();assert.equal(written[3],'Attending');manage('cancel',[1]);rowIndex=1;checked=true;edit();assert.equal(written[0],false);assert.equal(written[3],'Canceled');
+ const {ctx,manage,request}=setup();let rowIndex=0,checked=true,written,deleted;const sheet={deleteRows:(r,n)=>deleted=[r,n],getName:()=> 'Guest list',getRange:(_,c)=>({getValue:()=>request.id+':'+rowIndex,isChecked:()=>checked,setValues:rows=>written=rows[0]})};const edit=()=>ctx.onEdit({range:{getSheet:()=>sheet,getColumn:()=>1,getRow:()=>2,getNumRows:()=>1},source:{toast(){}}});
+ edit();assert.equal(written[3],'Checked in');assert.equal(manage('cancel',[0]).ok,false);checked=false;edit();assert.equal(written[3],'Attending');manage('cancel',[1]);rowIndex=1;checked=true;edit();assert.deepEqual(deleted,[2,1]);
+});
+
+test('remove only canceled rows, even for a sorted sheet and same-name guests',()=>{
+ const {ctx,manage,records,request}=setup(),id=request.id;
+ manage('cancel',[1]);const keys=ctx.canceledGuestIds_(Object.fromEntries(records)),rows=['header','other:0',id+':1',id+':0'];
+ const sh={getLastRow:()=>rows.length,getRange:()=>({getValues:()=>rows.slice(1).map(k=>[k])}),deleteRows:(r,n)=>rows.splice(r-1,n)};
+ ctx.pruneCanceledRows_(sh,keys);assert.deepEqual(rows,['header','other:0',id+':0']);
+ manage('cancel',[0]);ctx.pruneCanceledRows_(sh,ctx.canceledGuestIds_(Object.fromEntries(records)));assert.deepEqual(rows,['header','other:0']);
 });

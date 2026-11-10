@@ -233,7 +233,7 @@ em {
   gap: 20px;
   padding: 20px 0;
 }
-.menu-layout nav > a {
+.menu-layout nav > a, .menu-layout .program-link {
   font: clamp(26px, 2.8vw, 38px)/1.3 var(--display);
   display: flex;
   gap: 28px;
@@ -1140,7 +1140,7 @@ em {
     gap: 19px;
     padding-bottom: 35px;
   }
-  .menu-layout nav > a {
+  .menu-layout nav > a, .menu-layout .program-link {
     font-size: 30px;
   }
   .menu-promos {
@@ -1418,7 +1418,7 @@ em {
     max-width: 230px;
     margin: auto;
   }
-  .menu-layout nav > a {
+  .menu-layout nav > a, .menu-layout .program-link {
     font-size: 27px;
   }
   .menu-promos span {
@@ -1847,3 +1847,14 @@ em {
   .dbi-menu-brand { width: min(230px, 100%); }
   .dbi-footer-brand { width: min(290px, 90%); margin-bottom: 28px; }
 }
+
+/* Finance belongs to Flagship and occupies a row only while expanded. */
+.program-group { align-self:flex-start; }
+.program-line { display:flex;align-items:center;gap:.5rem; }
+.program-toggle { display:grid;place-items:center;width:44px;height:44px;border:0;background:none;color:var(--red);font:24px/1 var(--body);cursor:pointer; }
+.program-toggle span { transform:translateY(-2px); }
+.program-toggle[aria-expanded="true"] span { transform:rotate(180deg); }
+.program-group .nav-subprogram { display:flex;align-items:center;gap:.6rem;padding:.4rem 0 0 1rem;font:400 22px/1.4 var(--body); }
+.program-group .nav-subprogram[hidden] { display:none; }
+.program-group a:hover,.program-group a[aria-current] {color:var(--gold-ink)}
+.program-group .nav-subprogram span{color:var(--red)}
