@@ -26,7 +26,7 @@ var EVENT = {
   doors: '4:30 PM',
   time: '4:30 – 8:00 PM',
   food: 'Food is served to close the evening',
-  place: 'Cathedral Catholic High School',
+  place: 'Guadalupe Center Theater, Cathedral Catholic High School',
   address: '5555 Del Mar Heights Rd, San Diego, CA 92130',
   calendar: 'https://cathedralcatholicdbi.org/assets/dbi-case-competition-2026.ics',
   page: 'https://cathedralcatholicdbi.org/rsvp.html'

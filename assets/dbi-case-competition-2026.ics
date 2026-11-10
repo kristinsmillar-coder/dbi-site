@@ -26,7 +26,7 @@ DTSTAMP:20261110T120000Z
 DTSTART;TZID=America/Los_Angeles:20261202T163000
 DTEND;TZID=America/Los_Angeles:20261202T200000
 SUMMARY:The DBI Case Competition
-LOCATION:Cathedral Catholic High School\, 5555 Del Mar Heights Rd\, San Diego\, CA 92130
+LOCATION:Guadalupe Center Theater\, Cathedral Catholic High School\, 5555 Del Mar Heights Rd\, San Diego\, CA 92130
 DESCRIPTION:Doors open at 4:30 PM. Event runs 4:30-8:00 PM\, with food served to close the evening. Questions: dbi@cathedralcatholic.org
 END:VEVENT
 END:VCALENDAR

@@ -57,7 +57,7 @@
   },
   "rsvp": {
     "title": "RSVP · The Case Competition",
-    "description": "RSVP for the Dons Business Institute Case Competition on Wednesday, December 2, 2026 at Cathedral Catholic High School. Doors open at 4:30 PM.",
+    "description": "RSVP for the Dons Business Institute Case Competition on Wednesday, December 2, 2026 in the Guadalupe Center Theater at Cathedral Catholic High School. Doors open at 4:30 PM.",
     "extra_head": "<link rel=\"stylesheet\" href=\"assets/rsvp.css\">",
     "extra_scripts": "<script src=\"assets/rsvp.js\"></script>"
   }
