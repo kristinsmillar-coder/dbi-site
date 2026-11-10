@@ -3,7 +3,7 @@ const {test}=require('node:test');
 function setup(){
  const records=new Map(),mail=[];const ctx={PropertiesService:{getScriptProperties:()=>({getProperties:()=>Object.fromEntries(records),getProperty:k=>records.get(k),setProperty:(k,v)=>records.set(k,v)})},Utilities:{getUuid:randomUUID,formatDate:()=>''},LockService:{getScriptLock:()=>({waitLock(){},releaseLock(){}})},MailApp:{sendEmail:e=>mail.push(e)}};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/../tools/family-tickets.gs','utf8'),ctx);
- const request={id:randomUUID(),email:'parent@example.test',attending:'yes',guests:[{name:'Parent',type:'Adult guest'},{name:'Child',type:'Student'}]};
+ const request={id:randomUUID(),email:'parent@example.test',attending:'yes',guests:[{name:'Parent',type:'Parent or guardian'},{name:'Child',type:'Student'}]};
  const reserve=()=>ctx.reserve_({postData:{contents:JSON.stringify(request)}});const b=reserve(),token=b.manage.split('#manage=')[1],manage=(action,indices)=>ctx.manage_({action,indices,token});
  return {ctx,mail,request,reserve,b,token,manage,records};
 }

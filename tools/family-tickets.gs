@@ -2,7 +2,7 @@
  * Bound to DBI's private December 2 roster. Public callers may submit an RSVP
  * but cannot list or look up guests. All callable editor helpers end in "_".
  */
-const TYPES = ['Adult guest','Student','Cathedral Catholic faculty','Alumni','Community member'];
+const TYPES = ['Parent or guardian','Adult guest','Student','Cathedral Catholic faculty','Alumni','Community member'];
 const END = Date.parse('2026-12-03T01:00:00Z'); // doors close 5 PM Pacific
 const MAIL = 'dbi@cathedralcatholic.org';
 const reply_ = obj => ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
@@ -45,7 +45,7 @@ function reserve_(e) {
       b.attempt=Date.now();store.setProperty(key,JSON.stringify(b));
       try {
         const yes=b.attending==='yes', names=b.guests.map((g,i)=>(i+1)+'. '+g.name+' — '+g.type).join('\n');
-        const body=yes ? 'Your free reservation is confirmed. Show this email at the door for everyone listed below.\n\nReservation: '+b.code+'\n'+names+'\n\nWednesday, December 2, 2026\nGuadalupe Center Theater, Cathedral Catholic High School\n5555 Del Mar Heights Rd, San Diego, CA 92130\nDoors open at 4:30 PM and close at 5:00 PM. The program runs 5:00–8:30 PM Pacific. Teams present in random order with a 10-minute break after the fifth team. Food follows the presentations.\n\nAdd to calendar: https://cathedralcatholicdbi.org/assets/dbi-case-competition-2026.ics'+(guests.some(g=>g.type==='Adult guest')?'\nOptional adult donations: https://cathedralcatholicdbi.org/donate.html#giving':'') : 'Thanks for letting us know you cannot attend. No seats have been reserved.';
+        const body=yes ? 'Your free reservation is confirmed. Show this email at the door for everyone listed below.\n\nReservation: '+b.code+'\n'+names+'\n\nWednesday, December 2, 2026\nGuadalupe Center Theater, Cathedral Catholic High School\n5555 Del Mar Heights Rd, San Diego, CA 92130\nDoors open at 4:30 PM and close at 5:00 PM. The program runs 5:00–8:30 PM Pacific. Teams present in random order with a 10-minute break after the fifth team. Food follows the presentations.\n\nAdd to calendar: https://cathedralcatholicdbi.org/assets/dbi-case-competition-2026.ics'+(guests.some(g=>['Parent or guardian','Adult guest'].includes(g.type))?'\nOptional adult donations: https://cathedralcatholicdbi.org/donate.html#giving':'') : 'Thanks for letting us know you cannot attend. No seats have been reserved.';
         MailApp.sendEmail({to:email,name:'Dons Business Institute',replyTo:MAIL,...(yes?{htmlBody:ticketHtml_(body,manage)}:{}),subject:yes?'Your DBI Case Competition tickets · December 2 · '+b.code:'Your DBI Case Competition RSVP · Unable to attend',body:body+(yes?'\n\nManage reservation or cancel individual guests: '+manage:'')+'\n\nDBI Case Competition · Sponsored by Squarena\nQuestions or changes? '+MAIL});
         b.mailed=true;
       } catch (_) {}
