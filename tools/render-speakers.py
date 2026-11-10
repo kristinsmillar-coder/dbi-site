@@ -17,7 +17,7 @@ def render_speakers(root: Path):
               <div class="speaker-portrait {p['id']}">{portrait}</div>
               <div class="speaker-copy">{topic}<h3>{p['name']}</h3>
               <p class="speaker-role">{p['role']}</p><p class="speaker-bio">{p['bio']}</p>
-              <a class="text-link" href="{p['url']}" target="_blank" rel="noopener" aria-label="Professional profile: {p['name']} (opens in a new tab)">Professional profile ↗</a></div>
+              <a class="text-link" href="{p['url']}" target="_blank" rel="noopener" aria-label="Professional profile: {p['name']} (opens in a new tab)">Professional profile [[icon:arrow-up-right]]</a></div>
             </article>''')
         result[group] = '\n'.join(cards)
     return result

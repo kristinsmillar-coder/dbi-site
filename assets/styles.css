@@ -703,10 +703,12 @@ em {
     border-color 160ms ease;
 }
 .btn:after {
-  content: "→";
-  color: currentColor;
-  font-size: 24px;
-  line-height: 1;
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  -webkit-mask: url("icons/arrow-right.svg") center/contain no-repeat;
+  mask: url("icons/arrow-right.svg") center/contain no-repeat;
   flex-shrink: 0;
 }
 .btn:hover,
@@ -852,12 +854,17 @@ em {
   display: none;
 }
 .faq summary:after {
-  content: "+";
-  color: var(--red);
-  font-size: 30px;
+  content: "";
+  width: 24px;
+  height: 24px;
+  flex: none;
+  background: var(--red);
+  -webkit-mask: url("icons/plus.svg") center/contain no-repeat;
+  mask: url("icons/plus.svg") center/contain no-repeat;
 }
 .faq details[open] summary:after {
-  content: "−";
+  -webkit-mask-image: url("icons/minus.svg");
+  mask-image: url("icons/minus.svg");
 }
 .faq details p {
   margin: 18px 25px 4px 0;
@@ -1858,3 +1865,13 @@ em {
 .program-group .nav-subprogram[hidden] { display:none; }
 .program-group a:hover,.program-group a[aria-current] {color:var(--gold-ink)}
 .program-group .nav-subprogram span{color:var(--red)}
+
+
+.dbi-icon { display:inline-block; width:1em; height:1em; flex:none; vertical-align:-.14em; pointer-events:none; }
+.menu-close .dbi-icon { width:55%; height:55%; }
+.menu-promos i .dbi-icon { width:58%; height:58%; }
+.program-toggle span { display:inline-flex; align-items:center; }
+.program-toggle .dbi-icon { width:18px; height:18px; }
+@media (forced-colors:active) {
+  .btn:after,.faq summary:after { forced-color-adjust:none; background:ButtonText; }
+}

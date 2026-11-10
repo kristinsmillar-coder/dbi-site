@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Build static HTML from the shared Cathedral layout and authored page fragments."""
 import json
+import re
 import runpy
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 speakers = runpy.run_path(str(ROOT / 'tools/render-speakers.py'))['render_speakers'](ROOT)
+# Inline decorative icons at build time; buttons with dynamic labels use the same SVG files as masks.
+icons = {p.stem: p.read_text().strip().replace('<svg ', '<svg class="dbi-icon" width="24" height="24" aria-hidden="true" focusable="false" ', 1)
+         for p in (ROOT / 'assets/icons').glob('*.svg')}
 layout = (ROOT / 'site/templates/base.html').read_text()
 for slug, page in json.loads((ROOT / 'site/pages.json').read_text()).items():
     values = {'extra_head': '', 'extra_scripts': '', 'body_class': 'inner', **page}
@@ -17,6 +21,7 @@ for slug, page in json.loads((ROOT / 'site/pages.json').read_text()).items():
     html = layout
     for key, value in values.items():
         html = html.replace('{{' + key + '}}', value)
+    html = re.sub(r'\[\[icon:([a-z-]+)\]\]', lambda m: icons[m[1]], html)
     if '{{' in html:
         raise ValueError(f'Unresolved template field in {slug}')
     (ROOT / f'{slug}.html').write_text('\n'.join(line.rstrip() for line in html.splitlines()) + '\n')
